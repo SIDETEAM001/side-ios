@@ -1,14 +1,9 @@
-//
-//  SceneDelegate.swift
-//  ProjectDescriptionHelpers
-//
-//  Created by 강민성 on 10/30/23.
-//
-
 import UIKit
+import FeatureSignIn
+import FeatureSignInInterface
+import Feature
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
     var window: UIWindow?
 
     func scene(
@@ -17,6 +12,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         options connectionOptions: UIScene.ConnectionOptions
     ) {
         guard let scene = (scene as? UIWindowScene) else { return }
+        let homeVC = HomeViewController()
+        let navigationController = UINavigationController(rootViewController: homeVC)
+        
+        window = UIWindow(windowScene: scene)
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {}
