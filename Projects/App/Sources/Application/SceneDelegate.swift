@@ -12,8 +12,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         options connectionOptions: UIScene.ConnectionOptions
     ) {
         guard let scene = (scene as? UIWindowScene) else { return }
-        let homeVC = HomeViewController()
-        let navigationController = UINavigationController(rootViewController: homeVC)
+        let emailVC = EmailViewController()
+        let navigationController = UINavigationController(rootViewController: emailVC)
         
         window = UIWindow(windowScene: scene)
         window?.rootViewController = navigationController
