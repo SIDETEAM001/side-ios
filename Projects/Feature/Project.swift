@@ -6,7 +6,7 @@ let project = Project.makeModule(
     name: ModulePath.Feature.name+ModulePath.Feature.SignUp.rawValue,
     targets: [
         .feature(
-            interface: .SignUp,
+            interface: .SignIn,
             factory: .init(
                 dependencies: [
                     .domain
@@ -23,3 +23,14 @@ let project = Project.makeModule(
         )
     ]
 )
+let targets: [Target] = [
+    .feature(
+        factory: .init(
+            dependencies: [
+                .domain,
+                .feature(implements: .SignIn),
+                .feature(implements: .SignUp)
+            ]
+        )
+    )
+]

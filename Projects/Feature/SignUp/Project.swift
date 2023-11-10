@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+=======
+//
+//  Project.swift
+//  ProjectDescriptionHelpers
+//
+//  Created by 강민성 on 11/6/23.
+//
+
+>>>>>>> develop
 import ProjectDescription
 import ProjectDescriptionHelpers
 import DependencyPlugin
@@ -23,4 +33,7 @@ let project = Project.makeModule(
         )
     ]
 )
+<<<<<<< HEAD
 
+=======
+>>>>>>> develop
