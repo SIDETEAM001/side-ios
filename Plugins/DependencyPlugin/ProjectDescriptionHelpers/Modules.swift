@@ -30,7 +30,11 @@ public extension ModulePath {
 public extension ModulePath {
     enum Feature: String, CaseIterable {
         case SignIn
+
         case Profile
+
+        case SignUp
+
         
         public static let name: String = "Feature"
     }

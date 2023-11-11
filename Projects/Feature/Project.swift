@@ -15,8 +15,12 @@ let targets: [Target] = [
             dependencies: [
                 .domain,
                 .feature(implements: .SignIn),
+
                 .feature(implements: .Profile)
             
+
+                .feature(implements: .SignUp)
+
             ]
         )
     )
