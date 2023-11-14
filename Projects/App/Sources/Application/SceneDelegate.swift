@@ -7,7 +7,6 @@
 
 import UIKit
 import Feature
-import FeatureSignUp
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
@@ -20,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     ) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        let passwordVC = PasswordViewController()
+        
         let navigationVC = UINavigationController(rootViewController: passwordVC)
         
         window?.rootViewController = navigationVC
