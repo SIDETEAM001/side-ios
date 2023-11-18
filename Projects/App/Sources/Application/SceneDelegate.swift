@@ -7,6 +7,8 @@
 
 import UIKit
 import Feature
+import FeatureSignUpInterface
+import FeatureSignUp
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
@@ -20,8 +22,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowscene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame:UIScreen.main.bounds)
         window?.windowScene = windowscene
-        let vc = PhoneNumberViewController()
         
+        let vc = PhoneNumberViewController()
+        let naviVC = UINavigationController(rootViewController: vc)
+        
+        window?.rootViewController = naviVC
         window?.makeKeyAndVisible()
     }
     
