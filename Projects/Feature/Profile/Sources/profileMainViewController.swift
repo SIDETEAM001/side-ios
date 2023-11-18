@@ -10,6 +10,8 @@ import SnapKit
 import RxSwift
 
 
+
+
 public class ProgressBarView: UIView {
     var profileProgressView: UIProgressView = {
         let view = UIProgressView()
@@ -23,6 +25,9 @@ public class ProgressBarView: UIView {
 
 public class profileMainViewController: UIViewController, UITextFieldDelegate {
 
+    
+    
+    
     let nickNameLabel = UILabel()
     
     
@@ -44,7 +49,7 @@ public class profileMainViewController: UIViewController, UITextFieldDelegate {
     
     public override func viewDidLoad() {
         
-        
+       
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         self.navigationItem.backBarButtonItem = backBarButtonItem
         nextBtn.isEnabled = false
@@ -99,6 +104,7 @@ public class profileMainViewController: UIViewController, UITextFieldDelegate {
         nickNameView.addSubview(nickNameLabel)
         view.addSubview(nickNameView)
        
+
         
         nickNameInputTextField.frame.size.height = 50
         nickNameView.addSubview(nickNameInputTextField)
@@ -137,6 +143,8 @@ public class profileMainViewController: UIViewController, UITextFieldDelegate {
     
     // 뷰 constraint 설정
     func render() {
+       
+        
         nickNameLabel.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(60)
             make.leading.equalToSuperview().offset(20)
@@ -165,6 +173,7 @@ public class profileMainViewController: UIViewController, UITextFieldDelegate {
             make.centerX.equalToSuperview()
             make.width.equalToSuperview()
         }
+    
     }
 }
 

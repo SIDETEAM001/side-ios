@@ -7,6 +7,7 @@
 
 import UIKit
 import Feature
+import FeatureProfile
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
@@ -21,6 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame:UIScreen.main.bounds)
         window?.windowScene = windowscene
         
+       
         window?.makeKeyAndVisible()
     }
     
