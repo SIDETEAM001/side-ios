@@ -20,10 +20,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowscene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame:UIScreen.main.bounds)
         window?.windowScene = windowscene
-        let emailvc = EmailViewController()
-        let navivc = UINavigationController(rootViewController: emailvc)
-        
-        window?.rootViewController = navivc
         window?.makeKeyAndVisible()
     }
     
