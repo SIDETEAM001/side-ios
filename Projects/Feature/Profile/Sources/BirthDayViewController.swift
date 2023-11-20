@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class BirthDayViewController: UIViewController, UITextFieldDelegate {
     let progressBar = ProgressBarView().profileProgressView
     let birthDayLabel = UILabel()
@@ -21,7 +22,11 @@ class BirthDayViewController: UIViewController, UITextFieldDelegate {
     
     let nextButton = UIButton()
     
+
+ 
+    
     override func viewDidLoad() {
+        
         birthDayInputTextField.delegate = self
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         self.navigationItem.backBarButtonItem = backBarButtonItem
