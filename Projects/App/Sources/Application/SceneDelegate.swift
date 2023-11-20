@@ -7,6 +7,7 @@
 
 import UIKit
 import Feature
+import FeatureSignUpInterface
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
@@ -20,7 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowscene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame:UIScreen.main.bounds)
         window?.windowScene = windowscene
+        let practiceVC = PracticeVC()
         
+        window?.rootViewController = practiceVC
         window?.makeKeyAndVisible()
     }
     
