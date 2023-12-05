@@ -1,5 +1,7 @@
 import UIKit
 import SnapKit
+import Shared
+import Feature
 
 public class MySegmentViewController: UIViewController {
     var containerView: UIView = {
@@ -11,7 +13,7 @@ public class MySegmentViewController: UIViewController {
     
     var underLineView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 104 / 255, green: 190 / 255, blue: 18 / 255, alpha: 1)
+        view.backgroundColor = SharedDSKitAsset.Colors.green.color
         
         return view
     }()
@@ -28,13 +30,12 @@ public class MySegmentViewController: UIViewController {
         segment.setBackgroundImage(UIImage(), for: .normal, barMetrics: .default)
         segment.setDividerImage(UIImage(), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
         segment.setTitleTextAttributes([
-            NSAttributedString.Key.foregroundColor: UIColor(red: 111 / 255, green: 111 / 255, blue: 111 / 255, alpha: 1),
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16, weight: .regular)
-        ], for: .normal)
+            NSAttributedString.Key.foregroundColor: SharedDSKitAsset.Colors.text03.color,
+            NSAttributedString.Key.font: Fonts.Body02.font], for: .normal)
         
         segment.setTitleTextAttributes([
-            NSAttributedString.Key.foregroundColor: UIColor(red: 104 / 255, green: 190 / 255, blue: 18 / 255, alpha: 1),
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16, weight: .bold)
+            NSAttributedString.Key.foregroundColor: SharedDSKitAsset.Colors.green.color,
+            NSAttributedString.Key.font: Fonts.SH02Bold.font
         ], for: .selected)
             
         return segment

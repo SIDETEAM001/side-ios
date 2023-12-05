@@ -1,5 +1,6 @@
 import UIKit
 import SnapKit
+import Shared
 
 public class AlertViewController: UIViewController {
     let tableView = UITableView()
@@ -28,6 +29,10 @@ extension AlertViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath) as? MyCell else { return UITableViewCell() }
         cell.titleLabel.text = ["기획자 모집합니다.", "안드로이드 개발자 모십니다."][indexPath.row]
         cell.contentLabel.text = ["[기획자 급구] 사이드 프로젝트 하실 분 구함", "코틀린 가능한 분 모십니다"][indexPath.row]
+        cell.titleLabel.font = Fonts.SH01.font
+        cell.contentLabel.font = Fonts.Body01.font
+        cell.titleLabel.textColor = SharedDSKitAsset.Colors.gr100.color
+        cell.contentLabel.textColor = SharedDSKitAsset.Colors.gr100.color
         
         return cell
     }

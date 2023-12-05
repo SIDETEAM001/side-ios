@@ -1,5 +1,6 @@
 import UIKit
 import SnapKit
+import Shared
 
 public class MeetingViewController: UIViewController {
     let tableView = UITableView()
@@ -26,6 +27,8 @@ extension MeetingViewController: UITableViewDataSource, UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MeetingCell", for: indexPath) as? MyCell else { return UITableViewCell() }
+        cell.contentLabel.font = Fonts.SH01Bold.font
+        cell.contentLabel.textColor = SharedDSKitAsset.Colors.gr100.color
         
         return cell
     }
