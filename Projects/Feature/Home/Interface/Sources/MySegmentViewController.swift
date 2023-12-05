@@ -1,7 +1,6 @@
 import UIKit
 import SnapKit
 import Shared
-import Feature
 
 public class MySegmentViewController: UIViewController {
     var containerView: UIView = {
@@ -137,6 +136,7 @@ public class MySegmentViewController: UIViewController {
 
 extension MySegmentViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     public func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        
         guard let currentIndex = viewControllers.firstIndex(of: viewController), currentIndex > 0 else {
             return nil
         }
@@ -145,6 +145,7 @@ extension MySegmentViewController: UIPageViewControllerDataSource, UIPageViewCon
     }
     
     public func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        
         guard let currentIndex = viewControllers.firstIndex(of: viewController), currentIndex < viewControllers.count - 1 else {
             return nil
         }

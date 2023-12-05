@@ -10,7 +10,7 @@ public class AlertViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(MyCell.self, forCellReuseIdentifier: "MyCell")
+        tableView.register(AlertCell.self, forCellReuseIdentifier: "MyCell")
             
         view.addSubview(tableView)
         
@@ -26,7 +26,7 @@ extension AlertViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath) as? MyCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath) as? AlertCell else { return UITableViewCell() }
         cell.titleLabel.text = ["기획자 모집합니다.", "안드로이드 개발자 모십니다."][indexPath.row]
         cell.contentLabel.text = ["[기획자 급구] 사이드 프로젝트 하실 분 구함", "코틀린 가능한 분 모십니다"][indexPath.row]
         cell.titleLabel.font = Fonts.SH01.font
@@ -50,7 +50,7 @@ extension AlertViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-class MyCell: UITableViewCell {
+class AlertCell: UITableViewCell {
     var cellImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .orange
