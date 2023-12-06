@@ -1,17 +1,18 @@
 import UIKit
 import SnapKit
+import Shared
 
 class LocationView: UIView {
     var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.placeholder = "읍,면,동으로 검색하세요."
         searchBar.layer.borderWidth = 1
-        searchBar.layer.borderColor = CGColor(red: 228 / 255, green: 228 / 255, blue: 228 / 255, alpha: 1)
         searchBar.layer.cornerRadius = 16
+        searchBar.layer.borderColor = SharedDSKitAsset.Colors.gr10.color.cgColor
         searchBar.backgroundImage = UIImage()
         
         if let textField = searchBar.value(forKey: "searchField") as? UITextField {
-            textField.backgroundColor = .white
+            textField.backgroundColor = SharedDSKitAsset.Colors.gr10.color
             textField.leftViewMode = .never
             textField.clearButtonMode = .never
         }
@@ -21,8 +22,8 @@ class LocationView: UIView {
     
     var searchButton: UIButton = {
         let searchButton = UIButton()
-        searchButton.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
-        searchButton.tintColor = .black
+        searchButton.setImage(SharedDSKitAsset.Icons.iconSearch24.image, for: .normal)
+        searchButton.tintColor = SharedDSKitAsset.Colors.gr100.color
         
         return searchButton
     }()
@@ -30,7 +31,7 @@ class LocationView: UIView {
     var leftBarbutton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
-        button.tintColor = .black
+        button.tintColor = SharedDSKitAsset.Colors.gr100.color
         
         return button
     }()
@@ -39,8 +40,8 @@ class LocationView: UIView {
     var settingButton: UIButton = {
         let button = UIButton()
         let attribute = NSAttributedString(string: "현재위치로 설정", attributes: [
-            .font: UIFont.systemFont(ofSize: 18, weight: UIFont.Weight(rawValue: 400)),
-            .foregroundColor: UIColor(red: 17 / 255, green: 17 / 255, blue: 17 / 255, alpha: 1)
+            .font: Fonts.Body03.font,
+            .foregroundColor: SharedDSKitAsset.Colors.gr100.color
         ])
         
         button.setAttributedTitle(attribute, for: .normal)
@@ -50,15 +51,15 @@ class LocationView: UIView {
     var leftImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "scope")
-        imageView.tintColor = .black
+        imageView.tintColor = SharedDSKitAsset.Colors.gr100.color
         
         return imageView
     }()
     
     var rightImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "checkmark")
-        imageView.tintColor = .black
+        imageView.image = SharedDSKitAsset.Icons.iconArrowRight16.image
+        imageView.tintColor = SharedDSKitAsset.Colors.gr100.color
         
         return imageView
     }()
