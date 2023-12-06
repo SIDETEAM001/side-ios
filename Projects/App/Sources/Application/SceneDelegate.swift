@@ -10,6 +10,7 @@ import Feature
 import FeatureProfile
 import FeatureSignUpInterface
 import FeatureSignUp
+import FeatureHome
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
@@ -24,6 +25,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame:UIScreen.main.bounds)
         window?.windowScene = windowscene
         
+        let mainViewController = ViewController()
+        window?.rootViewController = mainViewController
         window?.makeKeyAndVisible()
     }
     
