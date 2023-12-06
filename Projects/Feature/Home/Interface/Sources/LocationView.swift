@@ -16,7 +16,7 @@ class LocationView: UIView {
             textField.leftViewMode = .never
             textField.clearButtonMode = .never
         }
-    
+        
         return searchBar
     }()
     
