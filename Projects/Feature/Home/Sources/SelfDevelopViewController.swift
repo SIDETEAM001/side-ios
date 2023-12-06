@@ -49,18 +49,18 @@ extension SelfDevelopViewController: UITableViewDelegate, UITableViewDataSource 
             selfDevelopView.tableView.register(CodingCustomTableViewCell.self, forCellReuseIdentifier: "CodingCustomTableViewCell")
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "CodingCustomTableViewCell", for: indexPath) as? CodingCustomTableViewCell else { return UITableViewCell() }
             cell.label.text = data[indexPath.row]
-            selfDevelopView.tableView.rowHeight = 210
+            selfDevelopView.tableView.rowHeight = 130
             cell.selectionStyle = .none
             return cell
         }
-        
-     
     }
     
     public func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-    
-    
+   
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10.0
+    }
   
 }

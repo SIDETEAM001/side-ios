@@ -115,7 +115,7 @@ class BannerTableViewCell: UITableViewCell {
             make.top.equalTo(studyButton.snp.bottom).offset(8)
         }
         sideProjectButton.snp.makeConstraints { make in
-            make.leading.equalTo(studyButton.snp.trailing).offset(23)
+            make.leading.equalTo(studyButton.snp.trailing).offset(30)
             make.top.equalToSuperview().offset(20)
             make.width.equalTo(56)
             make.height.equalTo(56)
