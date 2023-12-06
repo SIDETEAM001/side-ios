@@ -1,35 +1,22 @@
-
-// MARK: 네비게이션과 하단 버튼은 만들어져 있어서 내부 화면 UI만 구성하였습니다.
-// TODO: 컴포넌트 적용 및 폰트 수정은 직접 해주세요.
+//
+//  CreatingGatheringView.swift
+//  FeatureHome
+//
+//  Created by yoonyeosong on 2023/12/06.
+//
 
 import UIKit
-import SnapKit
 import Shared
 
-public class ViewController: UIViewController {
-    lazy var createGatheringView = CreateGatheringView()
-    
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    public override func loadView() {
-        self.view = createGatheringView
-    }
-}
-
-final class CreateGatheringView: UIView {
-    // MARK: Init
+public class CreatingGatheringView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
-        setConstraints()
+        render()
     }
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setup()
+        render()
     }
-    
     // MARK: - UI
     let scrollView = UIScrollView()
     let contentView = UIView()
@@ -38,24 +25,27 @@ final class CreateGatheringView: UIView {
     let mainTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "모임을 설명해 주세요 : )"
-        label.font = .systemFont(ofSize: 24, weight: .bold)
+        label.font = Fonts.H02.font
         return label
     }()
     let subtitleLabel: UILabel = {
         let label = UILabel()
         label.text = "모임 게시글의 제목을 써주세요."
-        label.font = .systemFont(ofSize: 18, weight: .bold)
+        label.font = Fonts.SH03Bold.font
         return label
     }()
     let descriptionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.text = "게시글 제목에는 정확한 목적을 기재하면 지원률이 높아집니다!"
+        label.font = Fonts.Body02.font
+        label.textColor = SharedDSKitAsset.Colors.text03.color
         return label
     }()
     let titleTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "제목을 입력해 주세요."
+        textField.font = Fonts.Body02.font
         textField.borderStyle = .roundedRect
         return textField
     }()
@@ -64,18 +54,21 @@ final class CreateGatheringView: UIView {
     let regionLabel: UILabel = {
         let label = UILabel()
         label.text = "모임 지역을 선택해주세요."
-        label.font = .systemFont(ofSize: 18, weight: .bold)
+        label.font = Fonts.SH03Bold.font
         return label
     }()
     let onlineLabel: UILabel = {
         let label = UILabel()
         label.text = "온라인"
+        label.font = Fonts.Body02.font
         return label
     }()
     let onlineSwitch = UISwitch()
     let regionTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "읍,면,동으로 검색하세요."
+        textField.font = Fonts.Body02.font
+        textField.textColor = SharedDSKitAsset.Colors.textDisabled.color
         textField.borderStyle = .roundedRect
         return textField
     }()
@@ -84,12 +77,13 @@ final class CreateGatheringView: UIView {
     let memberLimitLabel: UILabel = {
         let label = UILabel()
         label.text = "모임에는 몇 명까지 가입할 수 있나요?"
-        label.font = .systemFont(ofSize: 18, weight: .bold)
+        label.font = Fonts.SH03Bold.font
         return label
     }()
     let maximumLabel: UILabel = {
         let label = UILabel()
         label.text = "최대"
+        label.font = Fonts.Body02.font
         return label
     }()
     let memberLimitTextField: UITextField = {
@@ -100,6 +94,7 @@ final class CreateGatheringView: UIView {
     let unitLabel: UILabel = {
         let label = UILabel()
         label.text = "명"
+        label.font = Fonts.Body02.font
         return label
     }()
     
@@ -107,31 +102,35 @@ final class CreateGatheringView: UIView {
     let dateTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "모임 날짜는 언제인가요?"
-        label.font = .systemFont(ofSize: 18, weight: .bold)
+        label.font = Fonts.SH03Bold.font
         return label
     }()
     
     let dateLabel: UILabel = {
         let label = UILabel()
         label.text = "모임 날짜"
+        label.font = Fonts.Caption.font
         return label
     }()
     // TODO: TextField에 date picker 붙이기
     let dateTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "날짜 선택"
+        textField.font = Fonts.Body02.font
         return textField
     }()
     
     let timeLabel: UILabel = {
         let label = UILabel()
         label.text = "모임 시간"
+        label.font = Fonts.Caption.font
         return label
     }()
     // TODO: TextField에 date picker 붙이기
     let timeTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "시간 선택"
+        textField.font = Fonts.Body02.font
         return textField
     }()
     
@@ -139,18 +138,22 @@ final class CreateGatheringView: UIView {
     let imageLabel: UILabel = {
         let label = UILabel()
         label.text = "대표 이미지를 골라주세요!"
-        label.font = .systemFont(ofSize: 18, weight: .bold)
+        label.font = Fonts.SH03Bold.font
         return label
     }()
     let addImageButton: UIButton = {
         let button = UIButton()
         button.setTitle("이미지 첨부", for: .normal)
-        button.backgroundColor = .gray
+        button.titleLabel?.font = Fonts.Caption.font
+        button.setTitleColor(SharedDSKitAsset.Colors.text02.color, for: .normal)
+        button.backgroundColor = SharedDSKitAsset.Colors.gr10.color
+        button.layer.cornerRadius = 16
         return button
     }()
     let setDefaultImageButton: UIButton = {
         let button = UIButton()
         button.setTitle("기본 이미지로 설정하기", for: .normal)
+        button.titleLabel?.font = Fonts.Body02.font
         return button
     }()
     
@@ -158,14 +161,15 @@ final class CreateGatheringView: UIView {
     let introductionLabel: UILabel = {
         let label = UILabel()
         label.text = "모임에 대한 소개글을 작성해주세요!"
-        label.font = .systemFont(ofSize: 18, weight: .bold)
+        label.font = Fonts.SH03Bold.font
         return label
     }()
     // TODO: first responder이나 아니냐에 따라 Text색상이 바뀌면서 placeholder가 사라지도록 하기
     let introductionTextView: UITextView = {
         let textView = UITextView()
         textView.text = "자유롭게 소개글을 작성해 보세요!"
-        textView.textColor = .gray
+        textView.textColor = SharedDSKitAsset.Colors.textDisabled.color
+        textView.font = Fonts.Body02.font
         textView.layer.borderColor = UIColor.lightGray.cgColor
         textView.layer.borderWidth = 1
         textView.clipsToBounds = true
@@ -266,12 +270,14 @@ final class CreateGatheringView: UIView {
     let createButton: UIButton = {
         let button = UIButton()
         button.setTitle("모임 개설하기", for: .normal)
-        button.backgroundColor = .gray
+        button.titleLabel?.font = Fonts.SH02Bold.font
+        button.setTitleColor(SharedDSKitAsset.Colors.textDisabled.color, for: .normal)
+        button.backgroundColor = SharedDSKitAsset.Colors.bgGray.color
+        button.layer.cornerRadius = 16
         return button
     }()
     
-    // MARK: Add subviews
-    private func setup() {
+    private func render() {
         // 배경색 흰색으로 구성
         backgroundColor = .white
         
@@ -303,10 +309,6 @@ final class CreateGatheringView: UIView {
         self.addSubview(scrollView)
         scrollView.addSubview(contentView)
         [titleStackView, regionStackView, memberLimitStackView, dateStackView, imageSelectionStackView, setDefaultImageButton, introductionStackView, createButton].forEach{ contentView.addSubview($0) }
-    }
-    
-    // MARK: Set constraints
-    private func setConstraints() {
         let topPadding: CGFloat = 60
         let horizontalPadding: CGFloat = 20
         let interSpacing: CGFloat = 40
