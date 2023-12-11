@@ -1,8 +1,9 @@
 import UIKit
 import SnapKit
 import Shared
+import FeatureProfile
 
-public class PhoneNumberViewController: UIViewController {
+public class PhoneNumberViewController: UIViewController, UITextFieldDelegate {
     var phoneNumberView = PhoneNumberView()
     var timer: Timer?
     var timerNum: Int = 0
@@ -15,9 +16,16 @@ public class PhoneNumberViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        
+        phoneNumberView.emailTextField.delegate = self
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        self.navigationItem.backBarButtonItem = backBarButtonItem
         setNavigationBar()
         setAddTarget()
+        phoneNumberView.signUpButton.rx.tap.subscribe(onNext: {
+            let profileMainView = profileMainViewController()
+            self.navigationController?.pushViewController(profileMainView, animated: false)
+            
+        })
     }
     
     func setNavigationBar() {
@@ -52,6 +60,20 @@ public class PhoneNumberViewController: UIViewController {
         let pred = NSPredicate(format: "SELF MATCHES %@", regex)
         
         return pred.evaluate(with: phoneNumber)
+    }
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+
+        if text == "Iop0221@naver.com" {
+            print("hello")
+            phoneNumberView.signUpButton.backgroundColor = SharedDSKitAsset.Colors.lightGreen.color
+            phoneNumberView.signUpButton.setTitleColor(SharedDSKitAsset.Colors.white.color, for: .normal)
+         
+        } else {
+            print("no")
+        }
+        return true
+    
     }
     
     func setNothingInsert() {
@@ -161,3 +183,5 @@ public class PhoneNumberViewController: UIViewController {
         }
     }
 }
+
+

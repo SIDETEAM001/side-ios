@@ -146,7 +146,7 @@ class PhoneNumberView: UIView {
         textField.font = Fonts.Body02.font
         textField.textColor = SharedDSKitAsset.Colors.gr100.color
         textField.isSecureTextEntry = true
-        
+        textField.textContentType = .oneTimeCode
         return textField
     }()
     
@@ -165,6 +165,7 @@ class PhoneNumberView: UIView {
         textField.textColor = SharedDSKitAsset.Colors.gr100.color
         textField.font = Fonts.Body02.font
         textField.isSecureTextEntry = true
+        textField.textContentType = .oneTimeCode
         
         return textField
     }()

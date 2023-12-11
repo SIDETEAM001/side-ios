@@ -19,6 +19,9 @@ class HobbyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ButtonTapped()
+        self.navigationItem.title = "프로필 설정"
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        self.navigationItem.backBarButtonItem = backBarButtonItem
 
     }
     

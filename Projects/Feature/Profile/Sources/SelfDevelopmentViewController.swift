@@ -20,6 +20,13 @@ class SelfDevelopmentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ButtonTapped()
+        selfDevelopmentView.nextButton.rx.tap.subscribe(onNext: {
+            let hobbyView = HobbyViewController()
+            self.navigationController?.pushViewController(hobbyView, animated: true)
+        })
+        self.navigationItem.title = "프로필 설정"
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        self.navigationItem.backBarButtonItem = backBarButtonItem
        
     }
     

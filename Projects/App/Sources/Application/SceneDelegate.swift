@@ -23,7 +23,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowscene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame:UIScreen.main.bounds)
         window?.windowScene = windowscene
-        
+        let main = PhoneNumberViewController()
+        let navigationController = UINavigationController(rootViewController: main)
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
     

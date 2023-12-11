@@ -28,29 +28,22 @@ class JobSelectViewController: UIViewController {
     let jobButton3 = UIButton()
     let jobButton4 = UIButton()
     let jobButton5 = UIButton()
-    
-    
-    
-    
-    
+
     var buttonCount = 0
     let nextButton = UIButton()
     
     override func viewDidLoad() {
         let buttonArray = [jobButton1, jobButton2, jobButton3, jobButton4, jobButton5]
         
-        
         for selectedButton in buttonArray {
             selectedButton.addTarget(self, action: #selector(jobButtonTapped), for: .touchUpInside)
         }
-        
-        
-        
-        
-        
+
         super.viewDidLoad()
         self.view.backgroundColor = .white
         self.navigationItem.title = "프로필 설정"
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        self.navigationItem.backBarButtonItem = backBarButtonItem
         
         progressBar.progress = 4/6
         // Do any additional setup after loading the view.
@@ -60,8 +53,6 @@ class JobSelectViewController: UIViewController {
         render()
         
         nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
-
-
 
     }
     @objc func nextButtonTapped(_ button: UIButton){
@@ -75,8 +66,6 @@ class JobSelectViewController: UIViewController {
             button.isSelected = false
             button.layer.borderColor = CGColor(red: 228/255, green: 228/255, blue: 228/255, alpha: 1)
             button.setTitleColor(UIColor(red: 17/255, green: 17/255, blue: 17/255, alpha: 1), for: .normal)
-            
-            
             
         }else {
             buttonCount += 1
