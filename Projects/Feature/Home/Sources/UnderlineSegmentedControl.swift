@@ -45,7 +45,7 @@ class UnderlineSegmentedControl: UISegmentedControl {
       override func layoutSubviews() {
         super.layoutSubviews()
 
-        let underlineFinalXPosition = (self.bounds.width / CGFloat(self.numberOfSegments)) * CGFloat(self.selectedSegmentIndex) + 5
+        let underlineFinalXPosition = (self.bounds.width / CGFloat(self.numberOfSegments)) * CGFloat(self.selectedSegmentIndex) + 6
         UIView.animate(
           withDuration: 0.1,
           animations: {
