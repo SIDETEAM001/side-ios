@@ -5,7 +5,7 @@ import Shared
 
 public class EmailView: UIView {
     let textView = UIView()
-    let textFieldView = UIView()
+    var textFieldView = UIView()
     
     var insertEmailLabelOne: UILabel = {
         let label = UILabel()

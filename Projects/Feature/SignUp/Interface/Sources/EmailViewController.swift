@@ -60,6 +60,8 @@ public class EmailViewController: UIViewController {
                 emailView.cancelButton.snp.updateConstraints {
                     $0.trailing.equalTo(emailView.textFieldView.snp.trailing).inset(48)
                 }
+                
+                
             } else {
                 emailView.useLabel.isHidden = true
                 emailView.checkImageView.isHidden = true
