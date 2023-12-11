@@ -10,12 +10,16 @@ import Shared
 
 public class CategorySelectedSelfDevelopmentView: UIView {
     
-    let tableView:UITableView = {
+    let tableView: UITableView = {
         let tableView = UITableView()
         return tableView
     }()
     
-    let tableView1:UITableView = {
+    let tableView1: UITableView = {
+        let tableView = UITableView()
+        return tableView
+    }()
+    let tableView2: UITableView = {
         let tableView = UITableView()
         return tableView
     }()
@@ -26,6 +30,12 @@ public class CategorySelectedSelfDevelopmentView: UIView {
         button.setTitleColor(SharedDSKitAsset.Colors.text03.color, for: .normal)
         return button
     }()
+    let studyButtonUnderline: UIView = {
+        let view = UIView()
+        view.backgroundColor = SharedDSKitAsset.Colors.green.color
+//        view.isHidden = true
+        return view
+    }()
     let sideProjectButton: UIButton = {
         let button = UIButton()
         button.setTitle("사이드프로젝트", for: .normal)
@@ -33,12 +43,24 @@ public class CategorySelectedSelfDevelopmentView: UIView {
         button.setTitleColor(SharedDSKitAsset.Colors.text03.color, for: .normal)
         return button
     }()
+    let sideProjectButtonUnderline: UIView = {
+        let view = UIView()
+        view.backgroundColor = SharedDSKitAsset.Colors.green.color
+        view.isHidden = true
+        return view
+    }()
     let changeJobButton: UIButton = {
         let button = UIButton()
         button.setTitle("이직준비", for: .normal)
         button.titleLabel?.font = Fonts.Body02.font
         button.setTitleColor(SharedDSKitAsset.Colors.text03.color, for: .normal)
         return button
+    }()
+    let changeJobButtonUnderline: UIView = {
+        let view = UIView()
+        view.backgroundColor = SharedDSKitAsset.Colors.green.color
+        view.isHidden = true
+        return view
     }()
     let languageButton: UIButton = {
         let button = UIButton()
@@ -68,25 +90,6 @@ public class CategorySelectedSelfDevelopmentView: UIView {
 //      scrollView.layer.borderWidth = 1
         return scrollView
     }()
-     let segmentedControl: UISegmentedControl = {
-        let segmentedControl = UnderlineSegmentedControl(items: ["스터디/자격증", "사이드 프로젝트", "이직 준비", "어학","제테크","기타"])
-        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: SharedDSKitAsset.Colors.text03.color,
-                                                 .font: Fonts.Body02.font], for: .normal)
-        segmentedControl.setTitleTextAttributes(
-            [
-                NSAttributedString.Key.foregroundColor: SharedDSKitAsset.Colors.lightGreen.color,
-                .font: Fonts.SH02Bold.font
-            ],
-            for: .selected
-        )
-//         segmentedControl.layer.borderWidth = 1
-//         segmentedControl.layer.borderColor = UIColor.black.cgColor
-
-         
-        return segmentedControl
-    }()
     
     let vc1: UIView = {
         let vc = UIView()
@@ -110,6 +113,13 @@ public class CategorySelectedSelfDevelopmentView: UIView {
     let languageView: UIView = {
         let vc = UIView()
         vc.backgroundColor = .black
+        vc.isHidden = true
+        return vc
+    }()
+    
+    let investmentView: UIView = {
+        let vc = UIView()
+        vc.backgroundColor = .yellow
         vc.isHidden = true
         return vc
     }()
@@ -168,7 +178,7 @@ public class CategorySelectedSelfDevelopmentView: UIView {
     func render() {
       
         self.backgroundColor = .white
-        scrollView.addSubViews([studyButton, sideProjectButton, changeJobButton, languageButton, investmentButton, etcButton])
+        scrollView.addSubViews([studyButton, sideProjectButton, changeJobButton, languageButton, investmentButton, etcButton, studyButtonUnderline, sideProjectButtonUnderline, changeJobButtonUnderline])
         addSubViews([entireButton, oneDayButton, shortTermButton, longTermButton, scrollView, vc1, vc2, vc3, languageView])
       
        
@@ -177,6 +187,7 @@ public class CategorySelectedSelfDevelopmentView: UIView {
        
         vc1.addSubview(tableView)
         vc2.addSubview(tableView1)
+        vc3.addSubview(tableView2)
         
         scrollView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(100)
@@ -184,14 +195,7 @@ public class CategorySelectedSelfDevelopmentView: UIView {
             make.trailing.equalToSuperview()
             make.height.equalTo(60)
         }
-//        segmentedControl.snp.makeConstraints { make in
-//            make.top.equalToSuperview().offset(10)
-//            make.leading.equalToSuperview()
-//            make.trailing.equalToSuperview()
-//            make.bottom.equalToSuperview().offset(-10)
-//            make.height.equalTo(40)
-//        }
-//        
+    
         entireButton.snp.makeConstraints { make in
             make.top.equalTo(scrollView.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(16)
@@ -249,6 +253,13 @@ public class CategorySelectedSelfDevelopmentView: UIView {
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
         }
+        
+        tableView2.snp.makeConstraints { make in
+            make.top.equalTo(entireButton.snp.bottom).offset(16)
+            make.bottom.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+        }
         studyButton.snp.makeConstraints { make in
             make.width.equalTo(121)
             make.height.equalTo(48)
@@ -286,6 +297,25 @@ public class CategorySelectedSelfDevelopmentView: UIView {
             make.leading.equalTo(investmentButton.snp.trailing)
             make.trailing.equalToSuperview()
             make.top.equalToSuperview()
+        }
+        
+        studyButtonUnderline.snp.makeConstraints { make in
+            make.top.equalTo(studyButton.snp.bottom)
+            make.width.equalTo(studyButton.snp.width)
+            make.height.equalTo(2)
+            make.leading.equalTo(studyButton.snp.leading)
+        }
+        sideProjectButtonUnderline.snp.makeConstraints { make in
+            make.top.equalTo(sideProjectButton.snp.bottom)
+            make.width.equalTo(sideProjectButton.snp.width)
+            make.height.equalTo(2)
+            make.leading.equalTo(sideProjectButton.snp.leading)
+        }
+        changeJobButtonUnderline.snp.makeConstraints { make in
+            make.top.equalTo(changeJobButton.snp.bottom)
+            make.width.equalTo(changeJobButton.snp.width)
+            make.height.equalTo(2)
+            make.leading.equalTo(changeJobButton.snp.leading)
         }
     }
 }

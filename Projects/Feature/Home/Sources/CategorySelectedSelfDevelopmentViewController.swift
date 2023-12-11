@@ -34,6 +34,10 @@ public class CategorySelectedSelfDevelopmentViewController: UIViewController {
         selfDevelopmentView.tableView1.dataSource = self
         selfDevelopmentView.tableView1.register(ItemCell.self, forCellReuseIdentifier: "ItemCell")
         
+        selfDevelopmentView.tableView2.delegate = self
+        selfDevelopmentView.tableView2.dataSource = self
+        selfDevelopmentView.tableView2.register(ItemCell.self, forCellReuseIdentifier: "ItemCell")
+        
         itemClicked()
         
     }
@@ -43,6 +47,7 @@ public class CategorySelectedSelfDevelopmentViewController: UIViewController {
             self.selfDevelopmentView.studyButton.setTitleColor(SharedDSKitAsset.Colors.green.color, for: .normal)
             self.selfDevelopmentView.studyButton.titleLabel?.font = Fonts.SH02Bold.font
             self.selfDevelopmentView.vc1.isHidden = false
+            self.selfDevelopmentView.studyButtonUnderline.isHidden = false
             //나머지 버튼은 Unselected상태로 변경
             self.selfDevelopmentView.sideProjectButton.setTitleColor(SharedDSKitAsset.Colors.text03.color, for: .normal)
             self.selfDevelopmentView.sideProjectButton.titleLabel?.font = Fonts.Body02.font
@@ -50,6 +55,9 @@ public class CategorySelectedSelfDevelopmentViewController: UIViewController {
             self.selfDevelopmentView.changeJobButton.titleLabel?.font = Fonts.Body02.font
             self.selfDevelopmentView.languageButton.setTitleColor(SharedDSKitAsset.Colors.text03.color, for: .normal)
             self.selfDevelopmentView.languageButton.titleLabel?.font = Fonts.Body02.font
+            
+            self.selfDevelopmentView.sideProjectButtonUnderline.isHidden = true
+            self.selfDevelopmentView.changeJobButtonUnderline.isHidden = true
             
             self.selfDevelopmentView.vc2.isHidden = true
             self.selfDevelopmentView.vc3.isHidden = true
@@ -60,6 +68,7 @@ public class CategorySelectedSelfDevelopmentViewController: UIViewController {
             self.selfDevelopmentView.sideProjectButton.setTitleColor(SharedDSKitAsset.Colors.green.color, for: .normal)
             self.selfDevelopmentView.sideProjectButton.titleLabel?.font = Fonts.SH02Bold.font
             self.selfDevelopmentView.vc2.isHidden = false
+            self.selfDevelopmentView.sideProjectButtonUnderline.isHidden = false
             
             self.selfDevelopmentView.studyButton.setTitleColor(SharedDSKitAsset.Colors.text03.color, for: .normal)
             self.selfDevelopmentView.studyButton.titleLabel?.font = Fonts.Body02.font
@@ -67,6 +76,10 @@ public class CategorySelectedSelfDevelopmentViewController: UIViewController {
             self.selfDevelopmentView.changeJobButton.titleLabel?.font = Fonts.Body02.font
             self.selfDevelopmentView.languageButton.setTitleColor(SharedDSKitAsset.Colors.text03.color, for: .normal)
             self.selfDevelopmentView.languageButton.titleLabel?.font = Fonts.Body02.font
+            
+            self.selfDevelopmentView.studyButtonUnderline.isHidden = true
+            self.selfDevelopmentView.changeJobButtonUnderline.isHidden = true
+
             
             self.selfDevelopmentView.vc1.isHidden = true
             self.selfDevelopmentView.vc3.isHidden = true
@@ -77,6 +90,7 @@ public class CategorySelectedSelfDevelopmentViewController: UIViewController {
             self.selfDevelopmentView.changeJobButton.setTitleColor(SharedDSKitAsset.Colors.green.color, for: .normal)
             self.selfDevelopmentView.changeJobButton.titleLabel?.font = Fonts.SH02Bold.font
             self.selfDevelopmentView.vc3.isHidden = false
+            self.selfDevelopmentView.changeJobButtonUnderline.isHidden = false
             
             self.selfDevelopmentView.studyButton.setTitleColor(SharedDSKitAsset.Colors.text03.color, for: .normal)
             self.selfDevelopmentView.studyButton.titleLabel?.font = Fonts.Body02.font
@@ -84,6 +98,9 @@ public class CategorySelectedSelfDevelopmentViewController: UIViewController {
             self.selfDevelopmentView.sideProjectButton.titleLabel?.font = Fonts.Body02.font
             self.selfDevelopmentView.languageButton.setTitleColor(SharedDSKitAsset.Colors.text03.color, for: .normal)
             self.selfDevelopmentView.languageButton.titleLabel?.font = Fonts.Body02.font
+            
+            self.selfDevelopmentView.studyButtonUnderline.isHidden = true
+            self.selfDevelopmentView.sideProjectButtonUnderline.isHidden = true
             
             self.selfDevelopmentView.vc1.isHidden = true
             self.selfDevelopmentView.vc2.isHidden = true
