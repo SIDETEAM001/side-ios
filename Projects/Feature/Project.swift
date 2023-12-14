@@ -17,8 +17,9 @@ let targets: [Target] = [
                 .feature(implements: .SignIn),
                 .feature(implements: .SignUp),
                 .feature(implements: .Profile),
-                .feature(implements: .Chat)
-                .feature(implements: .Home)
+                .feature(implements: .Chat),
+                .feature(implements: .Home),
+                .feature(implements: .MyPage)                
             ]
         )
     )
