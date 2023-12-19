@@ -202,7 +202,7 @@ class HomeView: UIView {
         
         bannerView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
-            make.centerX.equalToSuperview()
+            make.leading.equalToSuperview().offset(20)
             make.width.equalTo(335)
             make.height.equalTo(184)
         }
@@ -286,7 +286,6 @@ class HomeView: UIView {
     }
     private func addItems() {
            (0..<6).map { idx in
-             
                let titleLabel = UILabel()
                titleLabel.text = itemName[idx]
                titleLabel.font = Fonts.SH02Bold.font
@@ -344,7 +343,6 @@ class HomeView: UIView {
        }
     private func addItems2() {
         (0..<6).map { idx in
-          
             let titleLabel = UILabel()
             titleLabel.text = itemName[idx]
             titleLabel.font = Fonts.SH02Bold.font
