@@ -10,46 +10,39 @@ import SnapKit
 import Shared
 import RxCocoa
 
-
 class HomeView: UIView {
     
     var itemName: [String] = ["토익 스터디", "드로잉 함께 해요", "운동", "카페", "게임", "요리"]
     var itemImage: [UIImage] = [SharedDSKitAsset.Icons.thumb.image, SharedDSKitAsset.Icons.thumb2.image, SharedDSKitAsset.Icons.thumb3.image, SharedDSKitAsset.Icons.thumb.image, SharedDSKitAsset.Icons.thumb2.image, SharedDSKitAsset.Icons.thumb3.image]
     
-    
-    
     var segmentedControl: UISegmentedControl = {
         let segmentedControl = UnderlineSegmentedControl(items: ["추천", "자기계발", "취미"])
         return segmentedControl
     }()
-    
-   
-    
-    var recommendView: UIView = { //추천 뷰
+ 
+    var recommendView: UIView = {
         let view = UIView()
         return view
     }()
     
-    var selfDevelopmentView: UIView = {//자기 계발 뷰
+    var selfDevelopmentView: UIView = {
         let view = UIView()
         view.isHidden = true
         return view
     }()
     
-    var hobbyView: UIView = {//취미 뷰
+    var hobbyView: UIView = {
         let view = UIView()
         view.isHidden = true
         return view
     }()
     
-    var stackView1: UIStackView = { // 스택 뷰
+    var stackView1: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.backgroundColor = .clear
         stackView.distribution = .equalSpacing
         stackView.spacing = 8
-        //stackView.layer.borderColor = UIColor.blue.cgColor
-        //stackView.layer.borderWidth = 1
         return stackView
     }()
     
@@ -59,8 +52,6 @@ class HomeView: UIView {
         stackView.backgroundColor = .clear
         stackView.distribution = .equalSpacing
         stackView.spacing = 8
-        //stackView.layer.borderColor = UIColor.blue.cgColor
-        //stackView.layer.borderWidth = 1
         return stackView
     }()
     
@@ -101,7 +92,7 @@ class HomeView: UIView {
         return button
     }()
     
-    var shortMeetingClearButton: UIButton = { //단기 모임 추천에 덮을 투명 버튼
+    var shortMeetingClearButton: UIButton = {
         let button = UIButton()
         return button
     }()
@@ -121,10 +112,8 @@ class HomeView: UIView {
         return label
     }()
     
-    var longMeetingClearButton: UIButton = { //지속형 모임 추천에 덮을 투명 버튼
+    var longMeetingClearButton: UIButton = {
         let button = UIButton()
-        //button.layer.borderColor = UIColor.blue.cgColor
-        //button.layer.borderWidth = 1
         return button
     }()
     
@@ -145,25 +134,17 @@ class HomeView: UIView {
     
     var verticalScrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        //scrollView.layer.borderWidth = 1
-        //scrollView.layer.borderColor = UIColor.red.cgColor
         return scrollView
     }()
     
     var horizontalScrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        //scrollView.layer.borderWidth = 1
-        //scrollView.layer.borderColor = UIColor.green.cgColor
         return scrollView
     }()
     var horizontalScrollView2: UIScrollView = {
         let scrollView = UIScrollView()
-        //scrollView.layer.borderWidth = 1
-        //scrollView.layer.borderColor = UIColor.purple.cgColor
         return scrollView
     }()
-    
-   
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -179,8 +160,7 @@ class HomeView: UIView {
         addSubViews([segmentedControl, selfDevelopmentView, hobbyView, recommendView, searchButton, alarmButton ])
         
         recommendView.addSubViews([verticalScrollView])
-        
-        
+
         verticalScrollView.addSubViews([bannerView, shortMeetingButtonViewMainLabel, shortMeetingButtonViewSubLabel, shortMeetingClearButton, longMeetingButtonViewMainLabel,longMeetingButtonViewSubLabel, longMeetingClearButton,horizontalScrollView,horizontalScrollView2 ])
         
         horizontalScrollView.addSubview(stackView1)
@@ -257,15 +237,12 @@ class HomeView: UIView {
             make.width.equalToSuperview()
             make.leading.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
-
         }
-                                   
+    
         stackView1.snp.makeConstraints { make in
-            
             make.top.trailing.equalToSuperview()
             make.height.equalTo(113)
             make.leading.equalToSuperview().offset(20)
-            
         }
         stackView2.snp.makeConstraints { make in
             make.top.trailing.equalToSuperview()
@@ -320,7 +297,6 @@ class HomeView: UIView {
                tagCategoryButton.backgroundColor = SharedDSKitAsset.Colors.bgGray.color
                tagCategoryButton.setTitleColor(SharedDSKitAsset.Colors.text02.color, for: .normal)
                tagCategoryButton.titleLabel?.font = Fonts.ST01.font
-               
                
                let tagTypeButton = UIButton()
                tagTypeButton.setTitle("단기", for: .normal)
@@ -380,7 +356,6 @@ class HomeView: UIView {
             tagCategoryButton.setTitleColor(SharedDSKitAsset.Colors.text02.color, for: .normal)
             tagCategoryButton.titleLabel?.font = Fonts.ST01.font
             
-            
             let tagTypeButton = UIButton()
             tagTypeButton.setTitle("지속", for: .normal)
             tagTypeButton.layer.cornerRadius = 12
@@ -423,7 +398,5 @@ class HomeView: UIView {
             return itemView
         }
         .forEach(stackView2.addArrangedSubview)
-     
     }
-       
 }

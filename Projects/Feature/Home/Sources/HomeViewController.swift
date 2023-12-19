@@ -28,10 +28,7 @@ public class HomeViewController: UIViewController {
         let titleTextAttributes2 = [NSAttributedString.Key.font: Fonts.Body02.font, NSAttributedString.Key.foregroundColor: SharedDSKitAsset.Colors.text03.color]
         homeView.segmentedControl.setTitleTextAttributes(titleTextAttributes1, for: .selected)
         homeView.segmentedControl.setTitleTextAttributes(titleTextAttributes2, for: .normal)
-    
     }
-    
-    
     @objc private func didChangeValue(segment:UISegmentedControl) {
         if segment.selectedSegmentIndex == 0 {
             homeView.recommendView.isHidden = false
