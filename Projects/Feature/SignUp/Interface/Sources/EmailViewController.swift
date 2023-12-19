@@ -49,13 +49,10 @@ public class EmailViewController: UIViewController, UITextFieldDelegate {
     }
     
     func PhoneSetAddTarget(){
-       
         phoneView.phoneNumberView.phoneNumberTextField.addTarget(self, action: #selector(textFieldDidChange2(_:)), for: .editingChanged)
         phoneView.phoneNumberView.certificationButton.addTarget(self, action: #selector(certificationButtonClicked(_:)), for: .touchUpInside)
         phoneView.phoneNumberView.certificationTextField.addTarget(self, action: #selector(certificationtextFieldDidChange(_:)), for: .editingChanged)
-        
     }
-    
     
     func checkEmail(str: String) -> Bool {
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{3}"
@@ -322,7 +319,7 @@ public class EmailViewController: UIViewController, UITextFieldDelegate {
                     }
                     emailView.insertEmailLabelOne.text = "전화번호를 인증해 주세요"
                     emailView.insertEmailLabelTwo.text = "신뢰할 수 있는 커뮤니티를 위해 전화번호가 필요해요."
-                    emailView.phoneView.phoneNumberView.isHidden = false
+                    emailView.phoneView.phoneNumberView.isHidden = false                    
                     emailView.progressBar.progress = 1
                     
                     

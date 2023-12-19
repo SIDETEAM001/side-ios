@@ -115,14 +115,11 @@ public class EmailView: UIView {
         passwordView.labelStackView.isHidden = true
         phoneView.phoneNumberView.isHidden = true
         
-       
-        addSubViews([progressBar, signUpButton, textFieldView, textView, useLabel, passwordView.pwTextViewOne, passwordView.pwTextViewTwo, passwordView.labelStackView,passwordView.possibleUseLabel, passwordView.notAccordLabel, phoneView.phoneNumberView])
+        addSubViews([progressBar, signUpButton, textFieldView, textView, useLabel, passwordView.pwTextViewOne, passwordView.pwTextViewTwo, passwordView.labelStackView, passwordView.possibleUseLabel, passwordView.notAccordLabel, phoneView.phoneNumberView, phoneView.notAccordLabel])
       
         [passwordView.englishLabel, passwordView.numberLabel, passwordView.symbolLabel, passwordView.sixLabel].forEach {
             passwordView.labelStackView.addArrangedSubview($0)
         }
-        
-       
         
         addViews()
         setBorderLine()
@@ -238,11 +235,12 @@ public class EmailView: UIView {
             make.leading.equalToSuperview().offset(20)
             make.width.equalTo(355)
         }
-      
-        
-       
+        phoneView.notAccordLabel.snp.makeConstraints { make in
+            make.top.equalTo(phoneView.phoneNumberView.snp.bottom).offset(8)
+            make.leading.equalToSuperview().offset(20)
+            make.height.equalTo(17)
+        }
     }
-    
     
     func addViews() {
         [insertEmailLabelOne, insertEmailLabelTwo].forEach {
@@ -253,11 +251,6 @@ public class EmailView: UIView {
         [emailLabel, emailTextField, cancelButton, checkImageView].forEach {
             textFieldView.addSubview($0)
         }
-
-
-        
-        
-        
     }
     
     func setBorderLine() {
@@ -272,6 +265,5 @@ public class EmailView: UIView {
             $0.layer.borderColor = SharedDSKitAsset.Colors.gr10.color.cgColor
             $0.layer.backgroundColor = SharedDSKitAsset.Colors.gr10.color.cgColor
         }
-      
     }
 }
