@@ -29,12 +29,12 @@ public class HomeViewController: UIViewController {
         homeView.segmentedControl.setTitleTextAttributes(titleTextAttributes1, for: .selected)
         homeView.segmentedControl.setTitleTextAttributes(titleTextAttributes2, for: .normal)
     }
-    @objc private func didChangeValue(segment:UISegmentedControl) {
+    @objc private func didChangeValue(segment: UISegmentedControl) {
         if segment.selectedSegmentIndex == 0 {
             homeView.recommendView.isHidden = false
             homeView.selfDevelopmentView.isHidden = true
             homeView.hobbyView.isHidden = true
-        }else if segment.selectedSegmentIndex == 1{
+        } else if segment.selectedSegmentIndex == 1{
             homeView.recommendView.isHidden = true
             homeView.selfDevelopmentView.isHidden = false
             homeView.hobbyView.isHidden = true
