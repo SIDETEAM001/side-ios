@@ -1,8 +1,14 @@
 import UIKit
 import Shared
+import FeatureProfile
 
-public class EmailViewController: UIViewController {
+public class EmailViewController: UIViewController, UITextFieldDelegate {
     var emailView = EmailView()
+    var profileView = profileMainViewController()
+    var phoneView = PhoneNumberViewController()
+    
+    var timer: Timer?
+    var timerNum: Int = 0
     
     public override func loadView() {
         super.loadView()
@@ -13,11 +19,15 @@ public class EmailViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         emailView.signUpButton.rx.tap.subscribe(onNext: {
-            print("hello")
+            self.navigationController?.pushViewController(self.profileView, animated: false)
         })
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        backBarButtonItem.tintColor = .black
+        self.navigationItem.backBarButtonItem = backBarButtonItem
         setNavigationbar()
         setAddTarget()
         passwordViewSetAddTarget()
+        PhoneSetAddTarget()
     }
     
     func setNavigationbar() {
@@ -35,6 +45,15 @@ public class EmailViewController: UIViewController {
     func setAddTarget() {
         emailView.emailTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         emailView.cancelButton.addTarget(self, action: #selector(textFieldContentDelete(_:)), for: .touchUpInside)
+        
+    }
+    
+    func PhoneSetAddTarget(){
+       
+        phoneView.phoneNumberView.phoneNumberTextField.addTarget(self, action: #selector(textFieldDidChange2(_:)), for: .editingChanged)
+        phoneView.phoneNumberView.certificationButton.addTarget(self, action: #selector(certificationButtonClicked(_:)), for: .touchUpInside)
+        phoneView.phoneNumberView.certificationTextField.addTarget(self, action: #selector(certificationtextFieldDidChange(_:)), for: .editingChanged)
+        
     }
     
     
@@ -42,8 +61,128 @@ public class EmailViewController: UIViewController {
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{3}"
         return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: str)
     }
+    @objc func certificationButtonClicked(_ sender: Any?) {
+        guard let phoneNumber = phoneView.phoneNumberView.phoneNumberTextField.text else { return }
+        guard checkPhoneNumber(phoneNumber: phoneNumber) else { return }
+        
+        phoneView.phoneNumberView.certificationButton.setTitle("재요청", for: .normal)
+        phoneView.phoneNumberView.certificationButton.setTitleColor(SharedDSKitAsset.Colors.gr100.color, for: .normal)
+        phoneView.phoneNumberView.certificationView.isHidden = false
+        phoneView.phoneNumberView.passwordViewOne.snp.updateConstraints {
+            $0.top.equalTo(phoneView.phoneNumberView.phoneNumberView.snp.bottom).offset(104)
+        }
+        
+        startTimer()
+    }
+    func checkPhoneNumber(phoneNumber: String) -> Bool {
+        let regex = "^010-?([0-9]{4})-?([0-9]{4})$"
+        let pred = NSPredicate(format: "SELF MATCHES %@", regex)
+        
+        return pred.evaluate(with: phoneNumber)
+    }
+    func startTimer() {
+        if timer != nil && timer!.isValid {
+            timer?.invalidate()
+        }
+        
+        timerNum = 180
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCallback), userInfo: nil, repeats: true)
+    }
+    @objc func textFieldDidChange2(_ sender: Any?) {
+        guard let phoneNumber = phoneView.phoneNumberView.phoneNumberTextField.text else { return }
+        
+        if phoneView.phoneNumberView.phoneNumberTextField.text == "" {
+            setNothingInsert()
+            print("aaa")
+        } else {
+            if checkPhoneNumber(phoneNumber: phoneNumber) {
+                setCorrectInsert()
+                print("aaaaa")
+            } else {
+                setWrongInsert()
+                print("Aaaaaaa")
+            }
+        }
+    }
+    func setNothingInsert() {
+        phoneView.phoneNumberView.phoneNumberView.layer.borderColor = SharedDSKitAsset.Colors.gr10.color.cgColor
+        phoneView.phoneNumberView.phoneNumberLabel.textColor = SharedDSKitAsset.Colors.gr80.color
+        phoneView.phoneNumberView.notAccordLabel.isHidden = true
+        phoneView.phoneNumberView.warningImageView.isHidden = true
+        phoneView.phoneNumberView.certificationButton.backgroundColor = SharedDSKitAsset.Colors.gr10.color
+        phoneView.phoneNumberView.certificationButton.setTitleColor(SharedDSKitAsset.Colors.gr30.color, for: .normal)
+        
+        phoneView.phoneNumberView.passwordViewOne.snp.updateConstraints {
+            $0.top.equalTo(phoneView.phoneNumberView.phoneNumberView.snp.bottom).offset(24)
+        }
+    }
+    
+    func setWrongInsert() {
+        phoneView.phoneNumberView.phoneNumberView.layer.borderColor = SharedDSKitAsset.Colors.red.color.cgColor
+        phoneView.phoneNumberView.certificationButton.layer.borderColor = SharedDSKitAsset.Colors.gr10.color.cgColor
+        phoneView.phoneNumberView.notAccordLabel.isHidden = false
+        phoneView.phoneNumberView.warningImageView.isHidden = false
+        phoneView.phoneNumberView.phoneNumberLabel.textColor = SharedDSKitAsset.Colors.red.color
+        phoneView.phoneNumberView.certificationButton.backgroundColor = SharedDSKitAsset.Colors.gr10.color
+        phoneView.phoneNumberView.certificationButton.setTitleColor(SharedDSKitAsset.Colors.gr30.color, for: .normal)
+        phoneView.phoneNumberView.certificationButton.setTitle("인증하기", for: .normal)
+        
+        phoneView.phoneNumberView.passwordViewOne.snp.updateConstraints {
+            $0.top.equalTo(phoneView.phoneNumberView.phoneNumberView.snp.bottom).offset(49)
+        }
+        
+        phoneView.phoneNumberView.certificationView.isHidden = true
+    }
+    
+    func setCorrectInsert() {
+        phoneView.phoneNumberView.phoneNumberView.layer.borderColor = SharedDSKitAsset.Colors.gr100.color.cgColor
+        phoneView.phoneNumberView.certificationButton.layer.borderColor = SharedDSKitAsset.Colors.gr50.color.cgColor
+        phoneView.phoneNumberView.certificationButton.backgroundColor = SharedDSKitAsset.Colors.white.color
+        phoneView.phoneNumberView.certificationButton.setTitleColor(SharedDSKitAsset.Colors.gr100.color, for: .normal)
+        
+        phoneView.phoneNumberView.phoneNumberLabel.textColor = SharedDSKitAsset.Colors.gr80.color
+        phoneView.phoneNumberView.notAccordLabel.isHidden = true
+        phoneView.phoneNumberView.warningImageView.isHidden = true
+        
+        phoneView.phoneNumberView.passwordViewOne.snp.updateConstraints {
+            $0.top.equalTo(phoneView.phoneNumberView.phoneNumberView.snp.bottom).offset(24)
+        }
+    }
+    @objc func timerCallback() {
+        let minutes = timerNum / 60 % 60
+        let seconds = timerNum % 60
+        phoneView.phoneNumberView.timerLabel.text = String(format: "%01i:%02i", minutes, seconds)
+        
+        if timerNum == 0 {
+            timer?.invalidate()
+            timer = nil
+        }
+        
+        timerNum -= 1
+    }
+    @objc func certificationtextFieldDidChange(_ sender: Any?) {
+        // 예시 인증번호를 입력하면 체크마크와 인증 완료를 알려주는 안내문이 밑에 뜨게끔 설정
+        if phoneView.phoneNumberView.certificationTextField.text == "321233" {
+            phoneView.phoneNumberView.timerLabel.isHidden = true
+            phoneView.phoneNumberView.checkImageView.isHidden = false
+            phoneView.phoneNumberView.completeLabel.isHidden = false
+            
+            phoneView.phoneNumberView.passwordViewOne.snp.updateConstraints {
+                $0.top.equalTo(phoneView.phoneNumberView.phoneNumberView.snp.bottom).offset(129)
+            }
+        } else {
+            phoneView.phoneNumberView.timerLabel.isHidden = false
+            phoneView.phoneNumberView.checkImageView.isHidden = true
+            phoneView.phoneNumberView.completeLabel.isHidden = true
+            
+            phoneView.phoneNumberView.passwordViewOne.snp.updateConstraints {
+                $0.top.equalTo(phoneView.phoneNumberView.phoneNumberView.snp.bottom).offset(104)
+            }
+        }
+    }
     
     @objc func textFieldDidChange(_ sender: Any?) {
+      
         if emailView.emailTextField.text == "" {
             emailView.textFieldView.layer.borderColor = SharedDSKitAsset.Colors.gr10.color.cgColor
             emailView.cancelButton.isHidden = true
@@ -67,7 +206,7 @@ public class EmailViewController: UIViewController {
                 emailView.textFieldView.snp.remakeConstraints { make in
                     make.width.equalTo(335)
                     make.height.equalTo(56)
-                    make.top.equalToSuperview().offset(410)
+                    make.top.equalTo(emailView.passwordView.pwTextViewTwo.snp.bottom).offset(30)
                     make.leading.trailing.equalToSuperview().inset(20)
                 }
                 emailView.insertEmailLabelTwo.snp.remakeConstraints { make in
@@ -82,6 +221,7 @@ public class EmailViewController: UIViewController {
                     make.leading.equalToSuperview().offset(20)
                     make.width.equalTo(355)
                 }
+               
                 emailView.passwordView.pwTextViewOne.isHidden = false
                 emailView.passwordView.pwTextViewTwo.isHidden = false
                 emailView.passwordView.labelStackView.isHidden = false
@@ -180,6 +320,28 @@ public class EmailViewController: UIViewController {
                     [emailView.passwordView.possibleUseLabel, emailView.passwordView.cancelButtonOne, emailView.passwordView.checkImageView, emailView.passwordView.notAccordLabel, emailView.passwordView.cancelButtonTwo, emailView.passwordView.warningImageView].forEach {
                         $0.isHidden = true
                     }
+                    emailView.insertEmailLabelOne.text = "전화번호를 인증해 주세요"
+                    emailView.insertEmailLabelTwo.text = "신뢰할 수 있는 커뮤니티를 위해 전화번호가 필요해요."
+                    emailView.phoneView.phoneNumberView.isHidden = false
+                    emailView.progressBar.progress = 1
+                    
+                    
+                  
+                    
+                    emailView.passwordView.pwTextViewOne.snp.remakeConstraints { make in
+                        make.top.equalTo(emailView.phoneView.phoneNumberView.snp.bottom).offset(30)
+                        make.leading.equalToSuperview().offset(20)
+                        make.width.equalTo(355)
+                    }
+                    emailView.textFieldView.snp.remakeConstraints { make in
+                        make.top.equalTo(emailView.passwordView.pwTextViewTwo.snp.bottom).offset(30)
+                        make.width.equalTo(335)
+                        make.height.equalTo(56)
+                    
+                        make.leading.trailing.equalToSuperview().inset(20)
+                    }
+                    
+                   
                 } else {
                     emailView.passwordView.pwTextViewTwo.layer.borderColor = SharedDSKitAsset.Colors.red.color.cgColor
                     emailView.passwordView.warningImageView.isHidden = false
@@ -188,6 +350,7 @@ public class EmailViewController: UIViewController {
             }
         }
     }
+  
     @objc func textFieldContentDeleteTwo(_ sender: Any?) {
         emailView.passwordView.pwTextFieldTwo.text = ""
         emailView.passwordView.pwTextViewTwo.layer.borderColor = SharedDSKitAsset.Colors.gr10.color.cgColor

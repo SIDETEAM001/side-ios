@@ -17,15 +17,15 @@ public class PhoneNumberViewController: UIViewController, UITextFieldDelegate {
     public override func viewDidLoad() {
         super.viewDidLoad()
         phoneNumberView.emailTextField.delegate = self
-        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-        self.navigationItem.backBarButtonItem = backBarButtonItem
-        setNavigationBar()
+//        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+//        self.navigationItem.backBarButtonItem = backBarButtonItem
+//        setNavigationBar()
         setAddTarget()
-        phoneNumberView.signUpButton.rx.tap.subscribe(onNext: {
-            let profileMainView = profileMainViewController()
-            self.navigationController?.pushViewController(profileMainView, animated: false)
-            
-        })
+//        phoneNumberView.signUpButton.rx.tap.subscribe(onNext: {
+//            let profileMainView = profileMainViewController()
+//            self.navigationController?.pushViewController(profileMainView, animated: false)
+//
+//        })
     }
     
     func setNavigationBar() {

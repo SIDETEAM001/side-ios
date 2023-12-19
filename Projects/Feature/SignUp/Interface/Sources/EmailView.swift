@@ -95,6 +95,7 @@ public class EmailView: UIView {
     
     
     var passwordView = PasswordView()
+    var phoneView = PhoneNumberView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -112,8 +113,10 @@ public class EmailView: UIView {
         passwordView.pwTextViewOne.isHidden = true
         passwordView.pwTextViewTwo.isHidden = true
         passwordView.labelStackView.isHidden = true
+        phoneView.phoneNumberView.isHidden = true
         
-        addSubViews([progressBar, signUpButton, textFieldView, textView, useLabel, passwordView.pwTextViewOne, passwordView.pwTextViewTwo, passwordView.labelStackView,passwordView.possibleUseLabel, passwordView.notAccordLabel])
+       
+        addSubViews([progressBar, signUpButton, textFieldView, textView, useLabel, passwordView.pwTextViewOne, passwordView.pwTextViewTwo, passwordView.labelStackView,passwordView.possibleUseLabel, passwordView.notAccordLabel, phoneView.phoneNumberView])
       
         [passwordView.englishLabel, passwordView.numberLabel, passwordView.symbolLabel, passwordView.sixLabel].forEach {
             passwordView.labelStackView.addArrangedSubview($0)
@@ -149,7 +152,7 @@ public class EmailView: UIView {
         textFieldView.snp.makeConstraints {
             $0.width.equalTo(335)
             $0.height.equalTo(56)
-            $0.top.equalToSuperview().offset(200)
+            $0.top.equalToSuperview().offset(230)
             $0.leading.trailing.equalToSuperview().inset(20)
         }
         
@@ -217,7 +220,7 @@ public class EmailView: UIView {
         passwordView.labelStackView.snp.makeConstraints {
             $0.leading.equalTo(safeArea.snp.leading).inset(20)
             $0.trailing.equalTo(safeArea.snp.trailing).inset(143)
-            $0.top.equalTo(safeArea.snp.top).inset(238)
+            $0.top.equalTo(passwordView.pwTextViewOne.snp.bottom).offset(8)
             $0.height.equalTo(24)
         }
         passwordView.possibleUseLabel.snp.makeConstraints { make in
@@ -230,6 +233,13 @@ public class EmailView: UIView {
             make.leading.equalTo(safeArea.snp.leading).inset(20)
             make.height.equalTo(17)
         }
+        phoneView.phoneNumberView.snp.makeConstraints { make in
+            make.top.equalTo(insertEmailLabelTwo.snp.bottom).offset(20)
+            make.leading.equalToSuperview().offset(20)
+            make.width.equalTo(355)
+        }
+      
+        
        
     }
     
@@ -243,6 +253,10 @@ public class EmailView: UIView {
         [emailLabel, emailTextField, cancelButton, checkImageView].forEach {
             textFieldView.addSubview($0)
         }
+
+
+        
+        
         
     }
     

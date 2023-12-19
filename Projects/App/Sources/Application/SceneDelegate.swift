@@ -24,8 +24,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame:UIScreen.main.bounds)
         window?.windowScene = windowscene
         let main = EmailViewController()
-//        let navigationController = UINavigationController(rootViewController: main)
-        window?.rootViewController = main
+        let navigationController = UINavigationController(rootViewController: main)
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
     
