@@ -1,0 +1,37 @@
+//
+//  MyPageViewController.swift
+//  FeatureMyPageInterface
+//
+//  Created by coco on 2023/12/15.
+//
+
+import UIKit
+import Shared
+
+public class MyPageViewController: UIViewController {
+    let myPageView = MyPageVIew()
+    
+    public override func loadView() {
+        super.loadView()
+        
+        self.view = myPageView
+    }
+
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setNavigationbar()
+    }
+    
+    func setNavigationbar() {
+        title = "마이 페이지"
+        navigationController?.navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.font : Fonts.SH03Bold.font,
+            .foregroundColor: SharedDSKitAsset.Colors.gr100.color
+        ]
+        
+        let rightButton = UIBarButtonItem(image: SharedDSKitAsset.Icons.iconSetting24.image, style: .plain, target: self, action: nil)
+        rightButton.tintColor = SharedDSKitAsset.Colors.black.color
+        navigationItem.rightBarButtonItem = rightButton
+    }
+}
