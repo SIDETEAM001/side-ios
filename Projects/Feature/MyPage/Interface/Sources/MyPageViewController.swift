@@ -30,8 +30,17 @@ public class MyPageViewController: UIViewController {
             .foregroundColor: SharedDSKitAsset.Colors.gr100.color
         ]
         
-        let rightButton = UIBarButtonItem(image: SharedDSKitAsset.Icons.iconSetting24.image, style: .plain, target: self, action: nil)
-        rightButton.tintColor = SharedDSKitAsset.Colors.black.color
+        let rightButton = UIBarButtonItem(image: SharedDSKitAsset.Icons.iconSetting24.image, style: .plain, target: self, action: #selector(settingButtonTapped))
+        rightButton.tintColor = SharedDSKitAsset.Colors.gr100.color
         navigationItem.rightBarButtonItem = rightButton
+        
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        rightButton.tintColor = SharedDSKitAsset.Colors.gr100.color
+        self.navigationItem.backBarButtonItem = backBarButtonItem
+    }
+    
+    @objc func settingButtonTapped(){
+        let settingVC = SettingViewController()
+        self.navigationController?.pushViewController(settingVC, animated: false)
     }
 }

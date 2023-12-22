@@ -8,7 +8,7 @@
 import UIKit
 import Shared
 
-class CellRowView: UIView {
+class MypageCellView: UIView {
     let mainLabel: UILabel = {
         let label = UILabel()
         label.textColor = SharedDSKitAsset.Colors.gr100.color
