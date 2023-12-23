@@ -103,7 +103,6 @@ public class MyPageVIew: UIView {
     
     func setupUI() {
         self.backgroundColor = SharedDSKitAsset.Colors.bgWhite.color
-        contentScrollView.translatesAutoresizingMaskIntoConstraints = false
         setupHobbyLabel(firstHobbyLabel, title: "문화·예술")
         setupHobbyLabel(secondHobbyLabel, title: "이직준비")
         setupHobbyLabel(thirdHobbyLabel, title: "이직준비")

@@ -29,7 +29,7 @@ class SettingViewController: UIViewController {
         
         settingView.tableView.delegate = self
         settingView.tableView.dataSource = self
-        view.backgroundColor = SharedDSKitAsset.Colors.bgWhite.color
+        
         setNavigationbar()
     }
     

@@ -21,6 +21,7 @@ public class MyPageViewController: UIViewController {
         super.viewDidLoad()
         
         setNavigationbar()
+        myPageView.modifyButton.addTarget(self, action: #selector(modifyButtonClicked), for: .touchUpInside)
     }
     
     func setNavigationbar() {
@@ -42,5 +43,10 @@ public class MyPageViewController: UIViewController {
     @objc func settingButtonTapped(){
         let settingVC = SettingViewController()
         self.navigationController?.pushViewController(settingVC, animated: false)
+    }
+    
+    @objc func modifyButtonClicked(){
+        let modifyProfileVC = ModifyProfileViewController()
+        self.navigationController?.pushViewController(modifyProfileVC, animated: false)
     }
 }

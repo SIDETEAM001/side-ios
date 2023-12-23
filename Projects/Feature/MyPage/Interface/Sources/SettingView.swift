@@ -23,6 +23,7 @@ class SettingView: UIView {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         
+        self.backgroundColor = SharedDSKitAsset.Colors.bgWhite.color
         setupConstraints()
     }
     
