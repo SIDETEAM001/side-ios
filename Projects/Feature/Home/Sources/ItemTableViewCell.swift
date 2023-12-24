@@ -9,9 +9,9 @@ import UIKit
 import SnapKit
 import Shared
 
-class ItemCell: UITableViewCell {
+class ItemTableViewCell: UITableViewCell {
 
-    private let itemImage: UIImageView = {
+    private let itemImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = SharedDSKitAsset.Icons.thumb3.image
         return imageView
@@ -31,9 +31,7 @@ class ItemCell: UITableViewCell {
         button.layer.cornerRadius = 12
         return button
     }()
-    
-  
-    
+
     let categoryButton: UIButton = {
         let button = UIButton()
         button.setTitle("# 사이드프로젝트", for: .normal)
@@ -48,48 +46,51 @@ class ItemCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setConstraint()
     }
+    
     required init?(coder aDecoder: NSCoder){
         fatalError("init(coder): has not been implemented")
     }
+    
     private func setConstraint() {
-        contentView.addSubview(itemImage)
+        contentView.addSubview(itemImageView)
         contentView.addSubview(label)
         contentView.addSubview(tagButton)
         contentView.addSubview(categoryButton)
         
-        itemImage.snp.makeConstraints { make in //top,bottom 제약 모두 줘야 셀 크기 동적으로 조절
+        itemImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(10)
             make.leading.equalToSuperview().offset(10)
             make.bottom.equalToSuperview().offset(-10)
             make.width.equalTo(100)
             make.height.equalTo(100)
         }
+        
         label.snp.makeConstraints { make in
             make.top.equalTo(tagButton.snp.bottom).offset(10)
-            make.leading.equalTo(itemImage.snp.trailing).offset(10)
+            make.leading.equalTo(itemImageView.snp.trailing).offset(10)
             make.trailing.equalToSuperview()
         }
+        
         tagButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(10)
-            make.leading.equalTo(itemImage.snp.trailing).offset(10)
+            make.leading.equalTo(itemImageView.snp.trailing).offset(10)
             make.width.equalTo(45)
             make.height.equalTo(25)
         }
+        
         categoryButton.snp.makeConstraints { make in
             make.top.equalTo(label.snp.bottom).offset(20)
-            make.leading.equalTo(itemImage.snp.trailing).offset(10)
+            make.leading.equalTo(itemImageView.snp.trailing).offset(10)
             make.width.equalTo(99)
             make.height.equalTo(25)
         }
     }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
     }
-
 }

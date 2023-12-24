@@ -9,17 +9,15 @@ import UIKit
 import Shared
 
 public class CategorySelectedSelfDevelopmentView: UIView {
-    
-    let tableView: UITableView = {
+    let studyTableView: UITableView = {
         let tableView = UITableView()
         return tableView
     }()
-    
-    let tableView1: UITableView = {
+    let sideProjectTableView: UITableView = {
         let tableView = UITableView()
         return tableView
     }()
-    let tableView2: UITableView = {
+    let changeJobTableView: UITableView = {
         let tableView = UITableView()
         return tableView
     }()
@@ -33,7 +31,6 @@ public class CategorySelectedSelfDevelopmentView: UIView {
     let studyButtonUnderline: UIView = {
         let view = UIView()
         view.backgroundColor = SharedDSKitAsset.Colors.green.color
-//        view.isHidden = true
         return view
     }()
     let sideProjectButton: UIButton = {
@@ -86,44 +83,39 @@ public class CategorySelectedSelfDevelopmentView: UIView {
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.contentSize = CGSize(width: .zero, height: 50)
-//      scrollView.layer.borderColor = UIColor.red.cgColor
-//      scrollView.layer.borderWidth = 1
         return scrollView
     }()
     
-    let vc1: UIView = {
+    let studyView: UIView = {
         let vc = UIView()
         vc.backgroundColor = .red
         vc.isHidden = true
       return vc
     }()
-    let vc2: UIView = {
+    let sideProjectView: UIView = {
         let vc = UIView()
         vc.backgroundColor = .green
         vc.isHidden = true
         return vc
     }()
-    let vc3: UIView = {
+    let changeJobView: UIView = {
         let vc = UIView()
         vc.backgroundColor = .blue
         vc.isHidden = true
         return vc
     }()
-    
     let languageView: UIView = {
         let vc = UIView()
         vc.backgroundColor = .black
         vc.isHidden = true
         return vc
     }()
-    
     let investmentView: UIView = {
         let vc = UIView()
         vc.backgroundColor = .yellow
         vc.isHidden = true
         return vc
     }()
-    
     let entireButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = Fonts.Caption.font
@@ -133,7 +125,6 @@ public class CategorySelectedSelfDevelopmentView: UIView {
         button.layer.cornerRadius = 16
         return button
     }()
-    
     let oneDayButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = Fonts.Caption.font
@@ -143,7 +134,6 @@ public class CategorySelectedSelfDevelopmentView: UIView {
         button.layer.cornerRadius = 16
         return button
     }()
-    
     let shortTermButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = Fonts.Caption.font
@@ -153,7 +143,6 @@ public class CategorySelectedSelfDevelopmentView: UIView {
         button.layer.cornerRadius = 16
         return button
     }()
-    
     let longTermButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = Fonts.Caption.font
@@ -164,30 +153,26 @@ public class CategorySelectedSelfDevelopmentView: UIView {
         return button
     }()
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        print("hello")
         render()
     }
 
-        required init?(coder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     func render() {
-      
         self.backgroundColor = .white
         scrollView.addSubViews([studyButton, sideProjectButton, changeJobButton, languageButton, investmentButton, etcButton, studyButtonUnderline, sideProjectButtonUnderline, changeJobButtonUnderline])
-        addSubViews([entireButton, oneDayButton, shortTermButton, longTermButton, scrollView, vc1, vc2, vc3, languageView])
+        addSubViews([entireButton, oneDayButton, shortTermButton, longTermButton, scrollView, studyView, sideProjectView, changeJobView, languageView])
       
+        studyTableView.rowHeight = UITableView.automaticDimension
+        studyTableView.estimatedRowHeight = UITableView.automaticDimension
        
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = UITableView.automaticDimension
-       
-        vc1.addSubview(tableView)
-        vc2.addSubview(tableView1)
-        vc3.addSubview(tableView2)
+        studyView.addSubview(studyTableView)
+        sideProjectView.addSubview(sideProjectTableView)
+        changeJobView.addSubview(changeJobTableView)
         
         scrollView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(100)
@@ -195,7 +180,6 @@ public class CategorySelectedSelfDevelopmentView: UIView {
             make.trailing.equalToSuperview()
             make.height.equalTo(60)
         }
-    
         entireButton.snp.makeConstraints { make in
             make.top.equalTo(scrollView.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(16)
@@ -220,17 +204,17 @@ public class CategorySelectedSelfDevelopmentView: UIView {
             make.width.equalTo(45)
             make.height.equalTo(32)
         }
-        vc1.snp.makeConstraints { make in
+        studyView.snp.makeConstraints { make in
             make.top.equalTo(entireButton.snp.bottom).offset(16)
             make.leading.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
         }
-        vc2.snp.makeConstraints { make in
+        sideProjectView.snp.makeConstraints { make in
             make.top.equalTo(entireButton.snp.bottom).offset(16)
             make.leading.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
         }
-        vc3.snp.makeConstraints { make in
+        changeJobView.snp.makeConstraints { make in
             make.top.equalTo(entireButton.snp.bottom).offset(16)
             make.leading.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
@@ -240,21 +224,19 @@ public class CategorySelectedSelfDevelopmentView: UIView {
             make.leading.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
         }
-
-        tableView.snp.makeConstraints { make in
+        studyTableView.snp.makeConstraints { make in
             make.top.equalTo(entireButton.snp.bottom).offset(16)
             make.bottom.equalToSuperview()
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
         }
-        tableView1.snp.makeConstraints { make in
+        sideProjectTableView.snp.makeConstraints { make in
             make.top.equalTo(entireButton.snp.bottom).offset(16)
             make.bottom.equalToSuperview()
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
         }
-        
-        tableView2.snp.makeConstraints { make in
+        changeJobTableView.snp.makeConstraints { make in
             make.top.equalTo(entireButton.snp.bottom).offset(16)
             make.bottom.equalToSuperview()
             make.leading.equalToSuperview()
@@ -298,7 +280,6 @@ public class CategorySelectedSelfDevelopmentView: UIView {
             make.trailing.equalToSuperview()
             make.top.equalToSuperview()
         }
-        
         studyButtonUnderline.snp.makeConstraints { make in
             make.top.equalTo(studyButton.snp.bottom)
             make.width.equalTo(studyButton.snp.width)
