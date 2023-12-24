@@ -9,7 +9,7 @@ import UIKit
 
 public class NoCreatedGatheringViewController: UIViewController {
 
-    var noGatheringView = NoCreatedGatheringView()
+    let noGatheringView = NoCreatedGatheringView()
     
     public override func loadView() {
         super.loadView()
@@ -19,5 +19,4 @@ public class NoCreatedGatheringViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
     }
-
 }

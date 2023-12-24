@@ -39,7 +39,7 @@ class NoCreatedGatheringView: UIView {
     }()
     let investmentButton: UIButton = {
         let button = UIButton()
-        button.setTitle("제테크", for: .normal)
+        button.setTitle("재테크", for: .normal)
         button.titleLabel?.font = Fonts.Body02.font
         button.setTitleColor(SharedDSKitAsset.Colors.text03.color, for: .normal)
         return button
@@ -54,7 +54,6 @@ class NoCreatedGatheringView: UIView {
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.contentSize = CGSize(width: .zero, height: 50)
-        
         return scrollView
     }()
     
@@ -106,30 +105,35 @@ class NoCreatedGatheringView: UIView {
             make.width.equalTo(121)
             make.height.equalTo(48)
         }
+        
         sideProjectButton.snp.makeConstraints { make in
             make.leading.equalTo(studyButton.snp.trailing)
             make.top.equalToSuperview()
             make.width.equalTo(133)
             make.height.equalTo(48)
         }
+        
         changeJobButton.snp.makeConstraints { make in
             make.leading.equalTo(sideProjectButton.snp.trailing)
             make.top.equalToSuperview()
             make.width.equalTo(92)
             make.height.equalTo(48)
         }
+        
         languageButton.snp.makeConstraints { make in
             make.leading.equalTo(changeJobButton.snp.trailing)
             make.top.equalToSuperview()
             make.width.equalTo(92)
             make.height.equalTo(48)
         }
+        
         investmentButton.snp.makeConstraints { make in
             make.leading.equalTo(languageButton.snp.trailing)
             make.top.equalToSuperview()
             make.width.equalTo(92)
             make.height.equalTo(48)
         }
+        
         etcButton.snp.makeConstraints { make in
             make.leading.equalTo(investmentButton.snp.trailing)
             make.top.equalToSuperview()
@@ -137,11 +141,13 @@ class NoCreatedGatheringView: UIView {
             make.width.equalTo(92)
             make.height.equalTo(48)
         }
+        
         noGatheringView.snp.makeConstraints { make in
             make.top.equalTo(scrollView.snp.bottom)
             make.width.equalToSuperview()
             make.bottom.equalToSuperview().offset(-90)
         }
+        
         whiteCircleView.snp.makeConstraints { make in
             make.width.equalTo(80)
             make.height.equalTo(80)
