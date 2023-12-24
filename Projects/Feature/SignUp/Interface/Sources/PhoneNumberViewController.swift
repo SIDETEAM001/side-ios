@@ -17,15 +17,7 @@ public class PhoneNumberViewController: UIViewController, UITextFieldDelegate {
     public override func viewDidLoad() {
         super.viewDidLoad()
         phoneNumberView.emailTextField.delegate = self
-//        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-//        self.navigationItem.backBarButtonItem = backBarButtonItem
-//        setNavigationBar()
         setAddTarget()
-//        phoneNumberView.signUpButton.rx.tap.subscribe(onNext: {
-//            let profileMainView = profileMainViewController()
-//            self.navigationController?.pushViewController(profileMainView, animated: false)
-//
-//        })
     }
     
     func setNavigationBar() {
@@ -172,6 +164,7 @@ public class PhoneNumberViewController: UIViewController, UITextFieldDelegate {
             phoneNumberView.passwordViewOne.snp.updateConstraints {
                 $0.top.equalTo(phoneNumberView.phoneNumberView.snp.bottom).offset(129)
             }
+        
         } else {
             phoneNumberView.timerLabel.isHidden = false
             phoneNumberView.checkImageView.isHidden = true

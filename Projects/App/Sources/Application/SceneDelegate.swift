@@ -11,6 +11,7 @@ import FeatureProfile
 import FeatureSignUpInterface
 import FeatureSignUp
 
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
@@ -23,9 +24,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowscene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame:UIScreen.main.bounds)
         window?.windowScene = windowscene
-        let main = EmailViewController()
-        let navigationController = UINavigationController(rootViewController: main)
-        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
     

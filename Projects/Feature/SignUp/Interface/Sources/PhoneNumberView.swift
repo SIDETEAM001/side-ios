@@ -31,6 +31,7 @@ class PhoneNumberView: UIView {
     }()
     
     let phoneNumberView: UIView = UIView()
+    
     var phoneNumberLabel: UILabel = {
         let label = UILabel()
         label.text = "전화번호"

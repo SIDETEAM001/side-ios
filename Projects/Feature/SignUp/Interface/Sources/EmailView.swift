@@ -5,7 +5,7 @@ import Shared
 
 public class EmailView: UIView {
     let textView = UIView()
-    var textFieldView = UIView()
+    let textFieldView = UIView()
     
     var insertEmailLabelOne: UILabel = {
         let label = UILabel()
@@ -115,7 +115,7 @@ public class EmailView: UIView {
         passwordView.labelStackView.isHidden = true
         phoneView.phoneNumberView.isHidden = true
         
-        addSubViews([progressBar, signUpButton, textFieldView, textView, useLabel, passwordView.pwTextViewOne, passwordView.pwTextViewTwo, passwordView.labelStackView, passwordView.possibleUseLabel, passwordView.notAccordLabel, phoneView.phoneNumberView, phoneView.notAccordLabel])
+        addSubViews([progressBar, signUpButton, textFieldView, textView, useLabel, passwordView.pwTextViewOne, passwordView.pwTextViewTwo, passwordView.labelStackView, passwordView.possibleUseLabel, passwordView.notAccordLabel, phoneView.phoneNumberView, phoneView.notAccordLabel, phoneView.certificationView])
       
         [passwordView.englishLabel, passwordView.numberLabel, passwordView.symbolLabel, passwordView.sixLabel].forEach {
             passwordView.labelStackView.addArrangedSubview($0)
@@ -239,6 +239,11 @@ public class EmailView: UIView {
             make.top.equalTo(phoneView.phoneNumberView.snp.bottom).offset(8)
             make.leading.equalToSuperview().offset(20)
             make.height.equalTo(17)
+        }
+        phoneView.certificationView.snp.makeConstraints { make in
+            make.top.equalTo(phoneView.phoneNumberView.snp.bottom).offset(20)
+            make.leading.equalToSuperview().offset(20)
+            make.width.equalTo(355)
         }
     }
     
