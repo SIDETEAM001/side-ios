@@ -21,10 +21,17 @@ class ModifyProfileViewController: UIViewController {
         super.viewDidLoad()
 
         setNavigationbar()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(profileImageTapped(sender:)))
+        
+        modifyProfileView.containerView.addGestureRecognizer(tapGesture)
     }
     
     func setNavigationbar() {
         self.navigationController?.navigationBar.tintColor = SharedDSKitAsset.Colors.gr100.color
         self.navigationItem.title = "프로필수정"
+    }
+    
+    @objc func profileImageTapped(sender: UITapGestureRecognizer) {
+        print(#function)
     }
 }

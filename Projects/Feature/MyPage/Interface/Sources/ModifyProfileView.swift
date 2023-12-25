@@ -43,7 +43,7 @@ class ModifyProfileView: UIView {
     }()
     let usernameView = ModifyProfileTextField()
     let emailView = ModifyProfileTextField()
-    let postionView = ModifyProfileTextField()
+    let positionView = ModifyProfileTextField()
     let titleLabel: UILabel = {
         var label = UILabel()
         label.text = "관심사"
@@ -103,14 +103,11 @@ class ModifyProfileView: UIView {
         usernameView.textField.text = "청계산 다람쥐"
         emailView.titleLabel.text = "생년월일"
         emailView.textField.text = "1991/02/19"
-        postionView.titleLabel.text = "직무"
-        postionView.textField.text = "기획·전략·경영"
+        positionView.titleLabel.text = "직무"
+        positionView.textField.text = "기획·전략·경영"
         
         developTag.forEach { selfDevelopTagView.addTag(tag: $0) }
         hobbyTag.forEach { hobbyTagView.addTag(tag: $0) }
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(profileImageTapped(sender:)))
-        containerView.addGestureRecognizer(tapGesture)
     }
     
     func addSubviews() {
@@ -125,7 +122,7 @@ class ModifyProfileView: UIView {
             containerView.addSubview($0)
         }
         
-        [usernameView, emailView, postionView].forEach {
+        [usernameView, emailView, positionView].forEach {
             verticalStackView.addArrangedSubview($0)
         }
     }
@@ -195,10 +192,6 @@ class ModifyProfileView: UIView {
             $0.bottom.equalToSuperview().offset(23)
             $0.height.equalTo(52)
         }
-    }
-
-    @objc func profileImageTapped(sender: UITapGestureRecognizer) {
-        print(#function)
     }
 }
 
