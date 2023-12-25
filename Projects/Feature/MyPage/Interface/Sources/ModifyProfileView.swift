@@ -43,7 +43,28 @@ class ModifyProfileView: UIView {
     }()
     let usernameView = ModifyProfileTextField()
     let emailView = ModifyProfileTextField()
-    let positionView = ModifyProfileTextField()
+    let positionView: UIView = {
+        let view = UIView()
+        view.layer.borderWidth = 1
+        view.layer.cornerRadius = 12
+        view.layer.borderColor = SharedDSKitAsset.Colors.gr10.color.cgColor
+        return view
+    }()
+    var positionTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "직무"
+        label.alpha = 0.5
+        label.font = Fonts.Caption.font
+        label.textColor = SharedDSKitAsset.Colors.gr80.color
+        return label
+    }()
+    var positionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "기획·전략·경영"
+        label.font = Fonts.Body02.font
+        label.textColor = SharedDSKitAsset.Colors.gr100.color
+        return label
+    }()
     let titleLabel: UILabel = {
         var label = UILabel()
         label.text = "관심사"
@@ -103,9 +124,6 @@ class ModifyProfileView: UIView {
         usernameView.textField.text = "청계산 다람쥐"
         emailView.titleLabel.text = "생년월일"
         emailView.textField.text = "1991/02/19"
-        positionView.titleLabel.text = "직무"
-        positionView.textField.text = "기획·전략·경영"
-        
         developTag.forEach { selfDevelopTagView.addTag(tag: $0) }
         hobbyTag.forEach { hobbyTagView.addTag(tag: $0) }
     }
@@ -124,6 +142,10 @@ class ModifyProfileView: UIView {
         
         [usernameView, emailView, positionView].forEach {
             verticalStackView.addArrangedSubview($0)
+        }
+        
+        [positionTitleLabel, positionLabel].forEach {
+            positionView.addSubview($0)
         }
     }
     
@@ -157,6 +179,21 @@ class ModifyProfileView: UIView {
         verticalStackView.snp.makeConstraints {
             $0.top.equalTo(containerView.snp.bottom).offset(40)
             $0.leading.trailing.equalToSuperview().inset(20)
+        }
+
+        positionView.snp.makeConstraints {
+            $0.height.equalTo(56)
+        }
+
+        positionTitleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(8)
+            $0.leading.trailing.equalToSuperview().inset(16)
+        }
+        
+        positionLabel.snp.makeConstraints {
+            $0.top.equalTo(positionTitleLabel.snp.bottom)
+            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.bottom.equalToSuperview().inset(8)
         }
         
         titleLabel.snp.makeConstraints {

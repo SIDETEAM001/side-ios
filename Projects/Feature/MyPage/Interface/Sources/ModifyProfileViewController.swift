@@ -21,9 +21,12 @@ class ModifyProfileViewController: UIViewController {
         super.viewDidLoad()
 
         setNavigationbar()
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(profileImageTapped(sender:)))
         
-        modifyProfileView.containerView.addGestureRecognizer(tapGesture)
+        let tapUserImageGesture = UITapGestureRecognizer(target: self, action: #selector(profileImageTapped(sender:)))
+        modifyProfileView.containerView.addGestureRecognizer(tapUserImageGesture)
+        
+        let tapPositionGesture = UITapGestureRecognizer(target: self, action: #selector(selectPositionTapped))
+        modifyProfileView.positionView.addGestureRecognizer(tapPositionGesture)
     }
     
     func setNavigationbar() {
@@ -33,5 +36,11 @@ class ModifyProfileViewController: UIViewController {
     
     @objc func profileImageTapped(sender: UITapGestureRecognizer) {
         print(#function)
+    }
+    
+    @objc func selectPositionTapped(sender: UITapGestureRecognizer) {
+        let positionVC = SelectPositionViewController()
+        positionVC.modalPresentationStyle = .overCurrentContext
+        present(positionVC, animated: true)
     }
 }
