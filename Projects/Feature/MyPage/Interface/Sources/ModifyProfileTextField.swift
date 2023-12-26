@@ -9,14 +9,14 @@ import UIKit
 import Shared
 
 class ModifyProfileTextField: UIView {
-    var titleLabel: UILabel = {
+    let titleLabel: UILabel = {
         let label = UILabel()
         label.alpha = 0.5
         label.font = Fonts.Caption.font
         label.textColor = SharedDSKitAsset.Colors.gr80.color
         return label
     }()
-    var textField: UITextField = {
+    let textField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .none
         textField.font = Fonts.Body02.font
@@ -27,15 +27,18 @@ class ModifyProfileTextField: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.layer.borderWidth = 1
-        self.layer.cornerRadius = 12
-        self.layer.borderColor = SharedDSKitAsset.Colors.gr10.color.cgColor
-        
+        setupUI()
         setupConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupUI() {
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 12
+        self.layer.borderColor = SharedDSKitAsset.Colors.gr10.color.cgColor
     }
     
     func setupConstraints() {

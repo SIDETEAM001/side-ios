@@ -9,7 +9,7 @@ import UIKit
 import Shared
 
 public class MyPageViewController: UIViewController {
-    let myPageView = MyPageVIew()
+    let myPageView = MyPageView()
     
     public override func loadView() {
         super.loadView()
@@ -40,12 +40,12 @@ public class MyPageViewController: UIViewController {
         self.navigationItem.backBarButtonItem = backBarButtonItem
     }
     
-    @objc func settingButtonTapped(){
+    @objc func settingButtonTapped() {
         let settingVC = SettingViewController()
         self.navigationController?.pushViewController(settingVC, animated: false)
     }
     
-    @objc func modifyButtonClicked(){
+    @objc func modifyButtonClicked() {
         let modifyProfileVC = ModifyProfileViewController()
         self.navigationController?.pushViewController(modifyProfileVC, animated: false)
     }
