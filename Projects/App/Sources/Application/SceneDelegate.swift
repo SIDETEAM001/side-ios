@@ -10,6 +10,9 @@ import Feature
 import FeatureProfile
 import FeatureSignUpInterface
 import FeatureSignUp
+import FeatureHome
+import Shared
+
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
@@ -23,7 +26,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowscene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame:UIScreen.main.bounds)
         window?.windowScene = windowscene
-        
         window?.makeKeyAndVisible()
     }
     
