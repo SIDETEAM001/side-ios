@@ -23,9 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowscene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame:UIScreen.main.bounds)
         window?.windowScene = windowscene
-//        window?.rootViewController = UINavigationController(rootViewController: ChatList)
-        window?.rootViewController = ChattingRoomContainerViewComposer.makeContainer()
-//        window?.rootViewController = UINavigationController(rootViewController: NSVViewController())
+        window?.rootViewController = UINavigationController(rootViewController: ChattingListViewController())
         window?.backgroundColor = .white
         window?.makeKeyAndVisible()
     }
