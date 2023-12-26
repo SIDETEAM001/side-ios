@@ -41,7 +41,7 @@ public class MyPageVIew: UIView {
         label.textColor = SharedDSKitAsset.Colors.gr100.color
         return label
     }()
-    let postionLabel: UILabel = {
+    let positionLabel: UILabel = {
         var label = UILabel()
         label.text = "미디어 · 전시"
         label.font = Fonts.Caption.font
