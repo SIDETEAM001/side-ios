@@ -29,10 +29,6 @@ class JobSelectViewController: UIViewController {
     let jobButton4 = UIButton()
     let jobButton5 = UIButton()
     
-    
-    
-    
-    
     var buttonCount = 0
     let nextButton = UIButton()
     
@@ -44,24 +40,17 @@ class JobSelectViewController: UIViewController {
             selectedButton.addTarget(self, action: #selector(jobButtonTapped), for: .touchUpInside)
         }
         
-        
-        
-        
-        
         super.viewDidLoad()
         self.view.backgroundColor = .white
         self.navigationItem.title = "프로필 설정"
         
         progressBar.progress = 4/6
-        // Do any additional setup after loading the view.
-        
+
         configureUI()
         setUpValue()
         render()
         
         nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
-
-
 
     }
     @objc func nextButtonTapped(_ button: UIButton){
