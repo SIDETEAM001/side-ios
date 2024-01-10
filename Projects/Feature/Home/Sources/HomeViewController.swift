@@ -29,6 +29,9 @@ public class HomeViewController: UIViewController {
         homeView.segmentedControl.setTitleTextAttributes(titleTextAttributes1, for: .selected)
         homeView.segmentedControl.setTitleTextAttributes(titleTextAttributes2, for: .normal)
     }
+    public override func viewDidAppear(_ animated: Bool) {
+            print(self.view.window?.rootViewController)
+        }
     @objc private func didChangeValue(segment: UISegmentedControl) {
         if segment.selectedSegmentIndex == 0 {
             homeView.recommendView.isHidden = false

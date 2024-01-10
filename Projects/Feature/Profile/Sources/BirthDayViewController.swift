@@ -23,27 +23,21 @@ class BirthDayViewController: UIViewController, UITextFieldDelegate {
     let nextButton = UIButton()
     
     override func viewDidLoad() {
-        
         birthDayInputTextField.delegate = self
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         self.navigationItem.backBarButtonItem = backBarButtonItem
         super.viewDidLoad()
         nextButton.isEnabled = false
-        // Do any additional setup after loading the view.
         progressBar.progress = 3/6
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.tintColor = .black
         self.navigationItem.title = "프로필 설정"
-        
         
         configureUI()
         setUpValue()
         render()
         
         nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
-        
-        
-
     }
     
     @objc func nextButtonTapped(_ button:UIButton){
@@ -59,23 +53,16 @@ class BirthDayViewController: UIViewController, UITextFieldDelegate {
             nextButton.backgroundColor = UIColor(red: 104/255, green: 190/255, blue: 18/255, alpha: 1)
             nextButton.layer.borderColor = CGColor(red: 104/255, green: 190/255, blue: 18/255, alpha: 1)
             nextButton.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1), for: .normal)
-            
-            
         } else {
-            
               nextButton.isEnabled = false
               nextButton.layer.borderColor = CGColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
               nextButton.backgroundColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
               nextButton.setTitleColor(UIColor(red: 181/255, green: 181/255, blue: 181/255, alpha: 1), for: .normal)
-        
         }
         return true
-    
     }
     
-    
     func configureUI() {
-       
         view.addSubview(birthDayView)
         birthDayView.addSubview(birthDayLabel)
         
