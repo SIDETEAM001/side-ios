@@ -20,12 +20,13 @@ public class SelfDevelopmentViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         ButtonTapped()
+
         navigationSetup()
     }
     
     func navigationSetup() {
+        self.navigationItem.title = "프로필 설정"
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-        backBarButtonItem.tintColor = .black
         self.navigationItem.backBarButtonItem = backBarButtonItem
     }
     

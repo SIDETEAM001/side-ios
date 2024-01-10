@@ -11,7 +11,15 @@ let SPM = SwiftPackageManagerDependencies([
     .remote(url: "https://github.com/ReactiveX/RxSwift.git", requirement: .exact("6.6.0")),
     .remote(url: "https://github.com/Alamofire/Alamofire.git", requirement: .upToNextMajor(from: "5.8.1")),
     .remote(url: "https://github.com/ReactorKit/ReactorKit.git", requirement: .upToNextMajor(from: "3.2.0")),
-    .remote(url: "https://github.com/SnapKit/SnapKit.git", requirement: .upToNextMajor(from: "5.6.0"))
+    .remote(url: "https://github.com/SnapKit/SnapKit.git", requirement: .upToNextMajor(from: "5.6.0")),
+    .remote(url: "https://github.com/jonkykong/SideMenu", requirement: .upToNextMajor(from: "6.0.0")),
+    .remote(url: "https://github.com/WenchaoD/FSCalendar.git", requirement: .upToNextMajor(from: "2.8.3")),
+    .remote(url: "https://github.com/firebase/firebase-ios-sdk", requirement: .branch("main")),
+    .remote(url: "https://github.com/guoyingtao/Mantis.git", requirement: .exact("2.18.0"))
+], productTypes: [
+    "FSCalendar": .framework,
+    "Firebase": .framework,
+    "Mantis": .framework
 ])
 
 let dependencies = Dependencies(

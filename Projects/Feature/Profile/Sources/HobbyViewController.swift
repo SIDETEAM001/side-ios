@@ -17,7 +17,10 @@ public class HobbyViewController: UIViewController {
         super.loadView()
         view = hobbyView
     }
+
     public override func viewDidLoad() {
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
         hobbyView.nextButton.isEnabled = false
         ButtonTapped()
@@ -27,12 +30,13 @@ public class HobbyViewController: UIViewController {
     func navigationSetup() {
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         backBarButtonItem.tintColor = .black
+        self.navigationItem.title = "프로필 설정"
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         self.navigationItem.backBarButtonItem = backBarButtonItem
     }
     
     func ButtonTapped() {
         var buttonCount = 0
-
         hobbyView.musicButton.rx.tap.subscribe(onNext: {
             if self.hobbyView.musicButton.isSelected == false {
                 self.hobbyView.musicButton.isSelected = true
@@ -314,5 +318,32 @@ public class HobbyViewController: UIViewController {
             self.view.window?.rootViewController = homeView
             self.view.window?.makeKeyAndVisible()
         })
+
+        var buttons = [hobbyView.cafeButton, hobbyView.cultureButton, hobbyView.sportsButton, hobbyView.tripButton, hobbyView.danceButton, hobbyView.craftsButton, hobbyView.friendButton, hobbyView.bookButton, hobbyView.etcButton]
+               for button in buttons {
+                   button.rx.tap.subscribe(onNext: {
+                       if button.isSelected == false {
+                           button.isSelected = true
+                           buttonCount += 1
+                           button.layer.borderColor = SharedDSKitAsset.Colors.lightGreen.color.cgColor
+                           button.setTitleColor(SharedDSKitAsset.Colors.lightGreen.color, for: .normal)
+                       } else {
+                           button.isSelected = false
+                           buttonCount -= 1
+                           button.layer.borderColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1).cgColor
+                           button.setTitleColor(SharedDSKitAsset.Colors.gr100.color, for: .normal)
+                       }
+                       if buttonCount != 0 {
+                           self.hobbyView.nextButton.isEnabled = true
+                           self.hobbyView.nextButton.backgroundColor = SharedDSKitAsset.Colors.lightGreen.color
+                           self.hobbyView.nextButton.setTitleColor(SharedDSKitAsset.Colors.white.color, for: .normal)
+
+                       } else{
+                           self.hobbyView.nextButton.isEnabled = false
+                           self.hobbyView.nextButton.backgroundColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
+                           self.hobbyView.nextButton.setTitleColor(SharedDSKitAsset.Colors.gr30.color, for: .normal)
+                }
+            })
+        }
     }
 }
