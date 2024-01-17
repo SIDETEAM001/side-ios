@@ -56,7 +56,7 @@ public class CreateMeetingContentViewController: UIViewController {
         
         self.view.backgroundColor = .white
         addKeyboardObserverInScrollView(scrollView: scrollView, disposeBag: disposeBag)
-        hideKeyboard(disposeBag: disposeBag)
+        hideKeyboard(delegate: self, disposeBag: disposeBag)
         self.setNavigationbar()
         self.createButton.disableNextButton()
         self.bind()
@@ -276,5 +276,14 @@ public class CreateMeetingContentViewController: UIViewController {
             }
             self.view.layoutIfNeeded()
         })
+    }
+}
+
+extension CreateMeetingContentViewController: UIGestureRecognizerDelegate {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if let view = touch.view, view.isDescendant(of: self.createMeetingPeriodView.calendarView.calendar) {
+            return false
+        }
+        return true
     }
 }
