@@ -25,7 +25,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame:UIScreen.main.bounds)
         window?.windowScene = windowscene
         window?.backgroundColor = .white
-        window?.rootViewController = UINavigationController(rootViewController: SelectHobbyDetailsViewController(meetingTitle: "모임 설정", selectHobbyDetailsViewModel: SelectHobbyDetailsViewModel()))
         window?.makeKeyAndVisible()
     }
     
