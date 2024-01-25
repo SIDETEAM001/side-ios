@@ -281,9 +281,6 @@ public class CreateMeetingContentViewController: UIViewController {
 
 extension CreateMeetingContentViewController: UIGestureRecognizerDelegate {
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        if let view = touch.view, view.isDescendant(of: self.createMeetingPeriodView.calendarView.calendar) {
-            return false
-        }
-        return true
+        return touch.view?.isDescendant(of: self.createMeetingPeriodView.calendarView.calendar) == nil
     }
 }

@@ -187,7 +187,7 @@ class CreateMeetingImageView: UIView{
         alert.addAction(photoLibraryAction)
         alert.addAction(cameraAction)
         alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
-        self.homeNavigationController!.present(alert, animated: true, completion: nil)
+        self.homeNavigationController?.present(alert, animated: true, completion: nil)
     }
     
     func presentDeniedAlert(target: String) {
@@ -198,6 +198,6 @@ class CreateMeetingImageView: UIView{
             }
         }))
         alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
-        self.homeNavigationController!.present(alert, animated: true, completion: nil)
+        self.homeNavigationController?.present(alert, animated: true, completion: nil)
     }
 }
