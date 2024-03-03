@@ -8,6 +8,7 @@
 import Foundation
 import Shared
 import Domain
+import CoreStep
 
 import RxSwift
 import RxCocoa
@@ -67,7 +68,7 @@ public class PasswordVerificateWithPhoneNumberReactor: ReactorKit.Reactor, Stepp
     
     private let disposeBag: DisposeBag = DisposeBag()
     
-    init(provider: ServiceProviderType) {
+    public init(provider: ServiceProviderType) {
         self.initialState = State()
         self.provider = provider
     }

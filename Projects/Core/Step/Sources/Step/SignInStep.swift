@@ -1,8 +1,8 @@
 //
 //  SignInStep.swift
-//  FeatureSignInInterface
+//  CoreStep
 //
-//  Created by 강민성 on 1/18/24.
+//  Created by 강민성 on 3/3/24.
 //
 
 import Foundation

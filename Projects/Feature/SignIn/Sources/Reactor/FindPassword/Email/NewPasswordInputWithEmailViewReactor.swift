@@ -8,6 +8,7 @@
 import Foundation
 import Shared
 import Domain
+import CoreStep
 
 import RxSwift
 import RxCocoa
@@ -54,7 +55,7 @@ public class NewPasswordInputWithEmailReactor: ReactorKit.Reactor, Stepper {
     private let disposeBag: DisposeBag = DisposeBag()
     let email: String
     
-    init(provider: ServiceProviderType, email: String) {
+    public init(provider: ServiceProviderType, email: String) {
         self.initialState = State()
         self.provider = provider
         self.email = email

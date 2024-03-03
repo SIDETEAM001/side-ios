@@ -9,6 +9,7 @@ import Foundation
 import Shared
 import Domain
 import FeatureSignInInterface
+import CoreStep
 
 import RxSwift
 import RxCocoa
@@ -52,7 +53,7 @@ public class SignInWithEmailReactor: ReactorKit.Reactor, Stepper {
     
     private let disposeBag: DisposeBag = DisposeBag()
     
-    init(provider: ServiceProviderType) {
+    public init(provider: ServiceProviderType) {
         self.initialState = State()
         self.provider = provider
     }

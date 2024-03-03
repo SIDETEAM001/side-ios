@@ -2,7 +2,7 @@
 //  Project.swift
 //  ProjectDescriptionHelpers
 //
-//  Created by 강민성 on 10/30/23.
+//  Created by 강민성 on 3/3/24.
 //
 
 import ProjectDescription
@@ -10,12 +10,10 @@ import ProjectDescriptionHelpers
 import DependencyPlugin
 
 let targets: [Target] = [
-    .core(
+    .flow(
         factory: .init(
             dependencies: [
-                .core(implements: .Network),
-                .core(implements: .Step),
-                .shared
+                .feature
             ]
         )
     )
@@ -23,6 +21,6 @@ let targets: [Target] = [
 
 
 let project: Project = .makeModule(
-    name: "Core",
+    name: "Flow",
     targets: targets
 )

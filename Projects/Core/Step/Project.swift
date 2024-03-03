@@ -2,7 +2,7 @@
 //  Project.swift
 //  ProjectDescriptionHelpers
 //
-//  Created by 강민성 on 10/30/23.
+//  Created by 강민성 on 3/3/24.
 //
 
 import ProjectDescription
@@ -11,18 +11,23 @@ import DependencyPlugin
 
 let targets: [Target] = [
     .core(
+        interface: .Step,
         factory: .init(
             dependencies: [
-                .core(implements: .Network),
-                .core(implements: .Step),
                 .shared
+            ]
+        )
+    ),
+    .core(
+        implements: .Step,
+        factory: .init(
+            dependencies: [
+                .core(interface: .Step)
             ]
         )
     )
 ]
-
-
 let project: Project = .makeModule(
-    name: "Core",
+    name: "CoreStep",
     targets: targets
 )

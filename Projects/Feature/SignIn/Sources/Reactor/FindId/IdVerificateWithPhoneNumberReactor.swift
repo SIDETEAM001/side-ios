@@ -8,6 +8,7 @@
 import Foundation
 import Shared
 import Domain
+import CoreStep
 
 import FirebaseAuth
 import FirebaseMessaging
@@ -72,7 +73,7 @@ public class IdVerificateWithPhoneNumberReactor: ReactorKit.Reactor, Stepper {
     
     private let disposeBag: DisposeBag = DisposeBag()
     
-    init(provider: ServiceProviderType) {
+    public init(provider: ServiceProviderType) {
         self.initialState = State()
         self.provider = provider
     }

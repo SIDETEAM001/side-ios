@@ -1,10 +1,9 @@
 //
 //  AppFlow.swift
-//  TP
+//  Flow
 //
-//  Created by 강민성 on 1/15/24.
+//  Created by 강민성 on 3/3/24.
 //
-
 
 import UIKit
 import RxSwift
@@ -15,41 +14,43 @@ import FeatureHome
 import FeatureMyPage
 import SharedDSKit
 import Domain
+import CoreStep
 
-struct AppStepper: Stepper {
+public struct AppStepper: Stepper {
     
-    let steps = PublishRelay<Step>()
+    public let steps = PublishRelay<Step>()
     private let provider: ServiceProviderType
     private let disposeBag: DisposeBag = .init()
     
-    init(provider: ServiceProviderType) {
+    public init(provider: ServiceProviderType) {
         self.provider = provider
     }
 }
 
-final class AppFlow: Flow {
-    var root: Presentable {
+public final class AppFlow: Flow {
+    public var root: Presentable {
         return self.rootWindow
     }
     
     private let rootWindow: UIWindow
     private let provider: ServiceProviderType
     
-    init(with window: UIWindow, provider: ServiceProviderType) {
+    public init(with window: UIWindow, provider: ServiceProviderType) {
         self.rootWindow = window
         self.provider = provider
     }
     
-    func navigate(to step: Step) -> FlowContributors {
+    public func navigate(to step: Step) -> FlowContributors {
         guard let step = step as? AppStep else { return .none }
         
         switch step {
         case .signInRequired:
             return coordinateToSignInViewController()
             
-//        case .userIsSignedIn:
-//            return coordinateToHomeViewController()
+        case .userIsSignedIn:
+            return coordinateToTPTabBarContoller()
             
+            //MARK: 아래 goToTabBar은 지울것
         case .goToTabBar:
             return coordinateToTPTabBarContoller()
             

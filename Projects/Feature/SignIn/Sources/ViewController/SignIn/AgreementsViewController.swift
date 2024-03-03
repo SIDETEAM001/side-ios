@@ -26,7 +26,7 @@ public class AgreementsViewController: UIViewController, ReactorKit.View {
         view = agreementsView
     }
     
-    init(with reactor: Reactor) {
+    public init(with reactor: Reactor) {
         super.init(nibName: nil, bundle: nil)
         self.reactor = reactor
     }

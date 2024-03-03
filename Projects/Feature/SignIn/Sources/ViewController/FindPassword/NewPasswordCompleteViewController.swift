@@ -35,7 +35,7 @@ public class NewPasswordCompleteViewController: BaseViewController, ReactorKit.V
         addNavigationTitleLabel("비밀번호 찾기")
     }
     
-    init(with reactor: Reactor) {
+    public init(with reactor: Reactor) {
         super.init(nibName: nil, bundle: nil)
         self.reactor = reactor
     }

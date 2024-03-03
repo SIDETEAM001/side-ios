@@ -8,6 +8,7 @@
 import Foundation
 import Shared
 import Domain
+import CoreStep
 
 import RxSwift
 import RxCocoa
@@ -66,7 +67,7 @@ public class PasswordVerificateWithEmailReactor: ReactorKit.Reactor, Stepper {
     
     private let disposeBag: DisposeBag = DisposeBag()
     
-    init(provider: ServiceProviderType) {
+    public init(provider: ServiceProviderType) {
         self.initialState = State()
         self.provider = provider
     }

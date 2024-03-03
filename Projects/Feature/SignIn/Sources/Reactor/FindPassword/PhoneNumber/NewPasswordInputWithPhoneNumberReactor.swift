@@ -8,6 +8,7 @@
 import Foundation
 import Shared
 import Domain
+import CoreStep
 
 import RxSwift
 import RxCocoa
@@ -54,7 +55,7 @@ public class NewPasswordInputWithPhoneNumberReactor: ReactorKit.Reactor, Stepper
     private let disposeBag: DisposeBag = DisposeBag()
     let phoneNumber: String
     
-    init(provider: ServiceProviderType, phoneNumber: String) {
+    public init(provider: ServiceProviderType, phoneNumber: String) {
         self.initialState = State()
         self.provider = provider
         self.phoneNumber = phoneNumber

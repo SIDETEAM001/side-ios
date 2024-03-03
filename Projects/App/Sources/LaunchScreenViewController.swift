@@ -9,6 +9,8 @@ import UIKit
 import Shared
 import Domain
 import FeatureSignIn
+import Flow
+import CoreStep
 
 import Lottie
 import RxFlow
@@ -91,22 +93,16 @@ class LaunchScreenViewController: UIViewController {
     private func coordinateToAppFlow() {
         let provider: ServiceProviderType = DataRepository.shared
         let appFlow = AppFlow(with: window, provider: provider)
-//        let signInFlow = SignInFlow(with: provider)
         let appStepper = AppStepper(provider: provider)
-//        let signInStepper = SignInStepper(provider: provider)
         
         coordinator.coordinate(flow: appFlow, with: appStepper)
-//        coordinator.coordinate(flow: signInFlow, with: signInStepper)
         
         if provider.settingsService.isSignedIn {
-//            appStepper.steps.accept(AppStep.userIsSignedIn)
+            appStepper.steps.accept(AppStep.userIsSignedIn)
         }
         else {
             appStepper.steps.accept(AppStep.signInRequired)
-//            signInStepper.steps.accept(SignInStep.signInRequired)
         }
-        //TODO: 나중에 제거 예정
-        appStepper.steps.accept(AppStep.goToTabBar)
         window.makeKeyAndVisible()
     }
 

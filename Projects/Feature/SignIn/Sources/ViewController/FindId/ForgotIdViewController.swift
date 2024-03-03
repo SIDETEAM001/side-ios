@@ -37,7 +37,7 @@ public class ForgotIdViewController: BaseViewController, ReactorKit.View {
         render()
     }
     
-    init(with reactor: Reactor) {
+    public init(with reactor: Reactor) {
         super.init(nibName: nil, bundle: nil)
         self.reactor = reactor
     }
