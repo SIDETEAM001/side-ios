@@ -35,10 +35,10 @@ public class EditPhotoReactor: ReactorKit.Reactor, Stepper {
         case .clearImage:
             return .just(.setImage(nil))
         case .doubleDismissView:
-            self.steps.accept(CreateMeetingStep.doubleDismissViewController)
+            self.steps.accept(MyPageStep.doubleDismissViewController)
             return .empty()
         case .dismissView:
-            self.steps.accept(CreateMeetingStep.dismissViewController)
+            self.steps.accept(MyPageStep.dismissViewController)
             return .empty()
         }
     }

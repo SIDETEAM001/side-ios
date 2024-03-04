@@ -3,8 +3,8 @@ import ReactorKit
 import SnapKit
 import Shared
 
-class TermsOfServiceViewController: UIViewController, ReactorKit.View{
-    var disposeBag = DisposeBag()
+public class TermsOfServiceViewController: UIViewController, ReactorKit.View{
+    public var disposeBag = DisposeBag()
     let backButton = UIBarButtonItem(image: SharedDSKitAsset.Icons.iconArrowLeft24.image, style: .plain, target: nil, action: nil)
     let scrollView = UIScrollView()
     let contentView = UIView()
@@ -26,7 +26,7 @@ class TermsOfServiceViewController: UIViewController, ReactorKit.View{
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = .white
@@ -100,7 +100,7 @@ class TermsOfServiceViewController: UIViewController, ReactorKit.View{
 }
 
 extension TermsOfServiceViewController{
-    func bind(reactor: TermsReactor) {
+    public func bind(reactor: TermsReactor) {
         backButton.rx.tap
             .map{ Reactor.Action.backButtonTapped }
             .bind(to: reactor.action)

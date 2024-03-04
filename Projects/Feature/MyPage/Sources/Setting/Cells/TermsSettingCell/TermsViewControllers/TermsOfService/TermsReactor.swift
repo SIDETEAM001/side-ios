@@ -1,28 +1,29 @@
 import RxCocoa
 import ReactorKit
 import RxFlow
+import CoreStep
 
-class TermsReactor: ReactorKit.Reactor, Stepper{    
-    var initialState: State
-    var steps = PublishRelay<Step>()
+public class TermsReactor: ReactorKit.Reactor, Stepper{
+    public var initialState: State
+    public var steps = PublishRelay<Step>()
     
-    init(){
+    public init(){
         self.initialState = State()
     }
     
-    enum Action {
+    public enum Action {
         case backButtonTapped
     }
     
-    enum Mutation {
+    public enum Mutation {
         
     }
     
-    struct State{
+    public struct State{
         
     }
     
-    func mutate(action: Action) -> Observable<Mutation> {
+    public func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .backButtonTapped:
             self.steps.accept(MyPageStep.popViewController)

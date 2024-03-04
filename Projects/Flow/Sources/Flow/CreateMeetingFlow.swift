@@ -1,5 +1,7 @@
 import UIKit
 import Domain
+import CoreStep
+import FeatureHome
 import RxFlow
 import Mantis
 
@@ -127,7 +129,7 @@ final public class CreateMeetingFlow: Flow {
     }
     
     private func coordinateToAlbumViewController(type: String) -> FlowContributors {
-        let reactor = AlbumViewReactor(photoAuthType: type)
+        let reactor = AlbumReactor(photoAuthType: type)
         let viewController = AlbumViewController(with: reactor)
         self.rootViewController.present(viewController, animated: true)
         

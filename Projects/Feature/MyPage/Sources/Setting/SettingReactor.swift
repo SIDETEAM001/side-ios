@@ -2,6 +2,7 @@ import RxCocoa
 import ReactorKit
 import RxFlow
 import Domain
+import CoreStep
 
 public class SettingReactor: ReactorKit.Reactor, Stepper{
     public var initialState: State
@@ -56,8 +57,8 @@ public class SettingReactor: ReactorKit.Reactor, Stepper{
             }
             return .empty()
         case .logoutTapped:
-            //TODO: AppStep 연결 후 주석 삭제
-            //self?.steps.accept(MyPageStep.endMyPage)
+            self.steps.accept(MyPageStep.endMyPage)
+            SettingService.shared.signOut()
             return .empty()
         case .withdrawalTapped:
             self.steps.accept(MyPageStep.presentToWithdrawalAlert)
@@ -65,8 +66,8 @@ public class SettingReactor: ReactorKit.Reactor, Stepper{
         case .withdrawalConfirm:
             return self.provider.myPageService.widthdraw(memberId: self.currentState.memberId).responseData()
                 .flatMap { [weak self] _ -> Observable<Mutation> in
-                    //TODO: AppStep 연결 후 주석 삭제
-                    //self?.steps.accept(MyPageStep.endMyPage)
+                    self?.steps.accept(MyPageStep.endMyPage)
+                    SettingService.shared.removeSettings()
                     return .empty()
                 }
         }

@@ -28,10 +28,10 @@ public class CameraReactor: ReactorKit.Reactor, Stepper {
     public func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .selectImage(let image):
-            self.steps.accept(CreateMeetingStep.presentEditPhotoViewController(image: image))
+            self.steps.accept(MyPageStep.presentEditPhotoViewController(image: image))
             return .empty()
         case .dismissView:
-            self.steps.accept(CreateMeetingStep.dismissViewController)
+            self.steps.accept(MyPageStep.dismissViewController)
             return .empty()
         }
     }

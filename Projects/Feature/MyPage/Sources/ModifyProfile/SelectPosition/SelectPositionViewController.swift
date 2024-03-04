@@ -5,8 +5,8 @@ import ReactorKit
 import SnapKit
 import Shared
 
-class SelectPositionViewController: UIViewController, ReactorKit.View {
-     var disposeBag = DisposeBag()
+public class SelectPositionViewController: UIViewController, ReactorKit.View {
+    public var disposeBag = DisposeBag()
     let tapGesture = UITapGestureRecognizer()
     let swipeGesture = UISwipeGestureRecognizer()
     let dimmedView: UIView = {
@@ -45,7 +45,7 @@ class SelectPositionViewController: UIViewController, ReactorKit.View {
         return collectionView
     }()
     
-    init(with reactor: SelectPositionReactor) {
+    public init(with reactor: SelectPositionReactor) {
         super.init(nibName: nil, bundle: nil)
 
         self.reactor = reactor
@@ -56,7 +56,7 @@ class SelectPositionViewController: UIViewController, ReactorKit.View {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .clear
@@ -64,7 +64,7 @@ class SelectPositionViewController: UIViewController, ReactorKit.View {
         layout()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         appearAnimation()
@@ -133,7 +133,7 @@ class SelectPositionViewController: UIViewController, ReactorKit.View {
 }
 
 extension SelectPositionViewController {
-    func bind(reactor: SelectPositionReactor) {
+    public func bind(reactor: SelectPositionReactor) {
         bindAction(reactor: reactor)
         bindState(reactor: reactor)
     }

@@ -13,9 +13,13 @@ public final class MyPageService: APIService {
         return request(.get, "api/v1/accounts/me/profiles", useAuthHeader: true)
     }
     
+    public func transformImageToURL(image: [UIImage?]) -> Observable<UploadRequest> {
+        
+        return uploadImageFile(.post, "api/v1/files", useAuthHeader: true, images: image)
+    }
     
     public func modifyMyProfile(nickname: String, birth: String, profileImageUrl: String, jobCategory: String, clubCategories: [String]) -> Observable<DataRequest> {
-        var parameters: Parameters = [
+        let parameters: Parameters = [
             "nickname": nickname,
             "birth": birth,
             "profileImageUrl": profileImageUrl,
