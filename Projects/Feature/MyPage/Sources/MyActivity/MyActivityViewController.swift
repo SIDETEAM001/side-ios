@@ -5,8 +5,8 @@ import ReactorKit
 import SnapKit
 import Shared
 
-class MyActivityViewController: UIViewController, ReactorKit.View{
-    var disposeBag = DisposeBag()
+public class MyActivityViewController: UIViewController, ReactorKit.View{
+    public var disposeBag = DisposeBag()
     let backButton = UIBarButtonItem(image: SharedDSKitAsset.Icons.iconArrowLeft24.image, style: .plain, target: nil, action: nil)
     let meetingLabel: UILabel = {
         let label = UILabel()
@@ -52,7 +52,7 @@ class MyActivityViewController: UIViewController, ReactorKit.View{
         return tableView
     }()
     
-    init(with reactor: MyActivityReactor) {
+    public init(with reactor: MyActivityReactor) {
         super.init(nibName: nil, bundle: nil)
         
         self.reactor = reactor
@@ -62,7 +62,7 @@ class MyActivityViewController: UIViewController, ReactorKit.View{
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = .white
@@ -71,7 +71,7 @@ class MyActivityViewController: UIViewController, ReactorKit.View{
         bindAfterLayout()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.reactor?.action.onNext(.loadData)
@@ -150,7 +150,7 @@ class MyActivityViewController: UIViewController, ReactorKit.View{
 }
 
 extension MyActivityViewController{
-    func bind(reactor: MyActivityReactor) {
+    public func bind(reactor: MyActivityReactor) {
         bindAction(reactor: reactor)
         bindState(reactor: reactor)
     }

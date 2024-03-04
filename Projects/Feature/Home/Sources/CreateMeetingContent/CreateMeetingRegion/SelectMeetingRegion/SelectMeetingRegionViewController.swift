@@ -5,7 +5,7 @@ import ReactorKit
 import SnapKit
 import Shared
 
-class SelectMeetingRegionViewController: UIViewController, ReactorKit.View {
+public class SelectMeetingRegionViewController: UIViewController, ReactorKit.View {
     public var disposeBag = DisposeBag()
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -63,7 +63,7 @@ class SelectMeetingRegionViewController: UIViewController, ReactorKit.View {
         return tableView
     }()
     
-    init(with reactor: SelectMeetingRegionReactor) {
+    public init(with reactor: SelectMeetingRegionReactor) {
         super.init(nibName: nil, bundle: nil)
         
         self.reactor = reactor
@@ -74,7 +74,7 @@ class SelectMeetingRegionViewController: UIViewController, ReactorKit.View {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = .white
@@ -82,7 +82,7 @@ class SelectMeetingRegionViewController: UIViewController, ReactorKit.View {
         self.layout()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
         self.reactor?.action.onNext(.clearSearchedLocations)
@@ -162,7 +162,7 @@ class SelectMeetingRegionViewController: UIViewController, ReactorKit.View {
 }
 
 extension SelectMeetingRegionViewController{
-    func bind(reactor: SelectMeetingRegionReactor) {
+    public func bind(reactor: SelectMeetingRegionReactor) {
         bindAction(reactor: reactor)
         bindState(reactor: reactor)
     }

@@ -17,7 +17,7 @@ public enum SignInType: String {
 
 public final class SettingService {
     
-    static let shared = SettingService()
+    public static let shared = SettingService()
     
     private init() {}
     
@@ -68,13 +68,13 @@ public final class SettingService {
         }
     }
     
-    func removeSettings() {
+    public func removeSettings() {
         for key in UserDefaults.standard.dictionaryRepresentation().keys {
             UserDefaults.standard.removeObject(forKey: key.description)
         }
     }
     
-    func signOut() {
+    public func signOut() {
         isSignedIn = false
         accessToken = ""
         refreshToken = ""

@@ -30,3 +30,7 @@ struct HobbyCellData {
         ModifyProfileCellData(item: "그 외", isSelected: false)
     ]
 }
+
+struct TransformImageToURLResponse: Codable {
+    let urls: [String]
+}

@@ -2,6 +2,7 @@ import Photos
 import RxCocoa
 import ReactorKit
 import RxFlow
+import CoreStep
 
 public class CreateMeetingImageReactor: ReactorKit.Reactor, Stepper{
     public var initialState: State
@@ -44,10 +45,10 @@ public class CreateMeetingImageReactor: ReactorKit.Reactor, Stepper{
             EditPhotoReactor.shared.action.onNext(.setImage(CreateMeetingImageModel.randomImages[randomIndex]))
             return .empty()
         case .requestCameraAuthorization:
-            requestCameraAuthorization()
+            self.requestCameraAuthorization()
             return .empty()
         case .requestPhotoLibraryAuthorization:
-            requestPhotoLibraryAuthorization()
+            self.requestPhotoLibraryAuthorization()
             return .empty()
         case .setPhotoAuthType(let type):
             if type == "authorized" || type == "limited" {

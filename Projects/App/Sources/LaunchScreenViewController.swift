@@ -96,13 +96,13 @@ class LaunchScreenViewController: UIViewController {
         let appStepper = AppStepper(provider: provider)
         
         coordinator.coordinate(flow: appFlow, with: appStepper)
-        
-        if provider.settingsService.isSignedIn {
-            appStepper.steps.accept(AppStep.userIsSignedIn)
-        }
-        else {
-            appStepper.steps.accept(AppStep.signInRequired)
-        }
+        appStepper.steps.accept(AppStep.userIsSignedIn)
+//        if provider.settingsService.isSignedIn {
+//            appStepper.steps.accept(AppStep.userIsSignedIn)
+//        }
+//        else {
+//            appStepper.steps.accept(AppStep.signInRequired)
+//        }
         window.makeKeyAndVisible()
     }
 

@@ -266,6 +266,11 @@ extension ModifyProfileViewController{
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+        cameraButton.rx.tap
+            .map{ Reactor.Action.cameraButtonTapped }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
         saveButton.rx.tap
             .map{ Reactor.Action.saveButtonTapped }
             .bind(to: reactor.action)
@@ -315,6 +320,11 @@ extension ModifyProfileViewController{
             .bind(onNext: { [weak self] urlImage in
                 self?.userImageView.kf.setImage(with:URL(string: urlImage), options: [.processor(RoundCornerImageProcessor(cornerRadius: 48*Constants.standardHeight))])
             })
+            .disposed(by: disposeBag)
+        
+        EditPhotoReactor.shared.state.compactMap{ $0.image }
+            .distinctUntilChanged()
+            .bind(to: userImageView.rx.image)
             .disposed(by: disposeBag)
         
         reactor.state.map{ $0.nickname }

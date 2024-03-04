@@ -3,22 +3,23 @@ import ReactorKit
 import RxFlow
 import RxCocoa
 import Domain
+import CoreStep
 
-class MyActivityReactor: ReactorKit.Reactor, Stepper {
-    let initialState: State
-    var steps = PublishRelay<Step>()
+public class MyActivityReactor: ReactorKit.Reactor, Stepper {
+    public let initialState: State
+    public var steps = PublishRelay<Step>()
     let provider: ServiceProviderType
     var myClubCount: Int
     var clubBookmarkCount: Int
     
-    init(provider: ServiceProviderType, myClubCount: Int, clubBookmarkCount: Int) {
+    public init(provider: ServiceProviderType, myClubCount: Int, clubBookmarkCount: Int) {
         self.initialState = State()
         self.provider = provider
         self.myClubCount = myClubCount
         self.clubBookmarkCount = clubBookmarkCount
     }
     
-    enum Action {
+    public enum Action {
         case loadData
         case backButtonTapped
         case bookmarkButtonTapped(IndexPath)
@@ -26,21 +27,21 @@ class MyActivityReactor: ReactorKit.Reactor, Stepper {
         case updateBookmarkMeetingTableViewContentSize(CGSize)
     }
     
-    enum Mutation {
+    public enum Mutation {
         case setMyClubs([ClubContent])
         case setBookmarkClubs([ClubContent])
         case setMyMeetingTableViewContentSize(CGSize)
         case setBookmarkMeetingTableViewContentSize(CGSize)
     }
     
-    struct State {
+    public struct State {
         var myClubs: [ClubContent] = []
         var bookmarkClubs: [ClubContent] = []
         var myMeetingTableViewContentSize: CGSize = .zero
         var bookmarkMeetingTableViewContentSize: CGSize = .zero
     }
     
-    func mutate(action: Action) -> Observable<Mutation> {
+    public func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .loadData:
             let myClubsObservable = self.provider.myPageService.getMyClubs(page: 0, size: self.myClubCount).responseData()
@@ -89,7 +90,7 @@ class MyActivityReactor: ReactorKit.Reactor, Stepper {
         }
     }
     
-    func reduce(state: State, mutation: Mutation) -> State {
+    public func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
         switch mutation {
         case .setMyClubs(let clubs):

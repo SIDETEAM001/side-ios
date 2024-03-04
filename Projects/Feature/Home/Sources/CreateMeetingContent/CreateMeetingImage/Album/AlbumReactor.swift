@@ -3,17 +3,18 @@ import Photos
 import ReactorKit
 import RxFlow
 import RxCocoa
+import CoreStep
 
-class AlbumViewReactor: ReactorKit.Reactor, Stepper {
-    let initialState: State
-    var steps = PublishRelay<Step>()
+public class AlbumReactor: ReactorKit.Reactor, Stepper {
+    public let initialState: State
+    public var steps = PublishRelay<Step>()
     
-    init(photoAuthType: String) {
+    public init(photoAuthType: String) {
         self.initialState = State(photoAuthType: photoAuthType)
         fetchLimitedPhotos()
     }
     
-    enum Action {
+    public enum Action {
         case backButtonTapped
         case morePhotoButtonTapped(AlbumViewController)
         case photoAuthorizationSettingButtonTapped
@@ -22,7 +23,7 @@ class AlbumViewReactor: ReactorKit.Reactor, Stepper {
         case selectPhoto(UIImage?,IndexPath)
     }
     
-    enum Mutation {
+    public enum Mutation {
         case setPhotos([PHAsset])
         case setPhotosCnt(Int)
         case setSelectPhoto(UIImage?)
@@ -30,7 +31,7 @@ class AlbumViewReactor: ReactorKit.Reactor, Stepper {
         case setPreviousSelectedIndexPath(IndexPath?)
     }
     
-    struct State {
+    public struct State {
         var photoAuthType: String
         var photos: [PHAsset] = []
         var photosCnt: Int = 0
@@ -39,7 +40,7 @@ class AlbumViewReactor: ReactorKit.Reactor, Stepper {
         var previousSelectedIndexPath: IndexPath? = nil
     }
     
-    func mutate(action: Action) -> Observable<Mutation> {
+    public func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .backButtonTapped:
             self.steps.accept(CreateMeetingStep.dismissViewController)
@@ -80,7 +81,7 @@ class AlbumViewReactor: ReactorKit.Reactor, Stepper {
         }
     }
     
-    func reduce(state: State, mutation: Mutation) -> State {
+    public func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
         switch mutation {
         case .setPhotos(let photos):
